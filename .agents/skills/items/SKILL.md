@@ -1,28 +1,23 @@
 ---
 name: items
 description: >-
-  Edit A21 stackable/equipment items (.stk/.equ): materials, potions, prices,
-  expiry, binding, packages, vault tickets, new IDs. Use when the PVF task
-  mentions materials, consumables, potions, stackable, [price], [value],
-  [expiration date], packages, [cera package], or vault tickets. For shop
-  listing also read npc-shop/.
+  Inspect or edit A21 item definitions (.stk/.equ): materials, potions, NPC
+  item prices, expiry, binding, package rewards, vault tickets, and new IDs.
+  Use for item properties or opening/use effects. For NPC listings also read
+  npc-shop; for CERA listings, prices, pages, or contracts read cera-shop.
 ---
 
 # A21 materials, consumables, stackables
 
-Sources: current `Script.pvf` and:
-
-- `ServerS4A21/Server/DfoServer/Game/Inventory/ItemMetadataResolver.cs`
-- `StackableExpirationPolicyResolver.cs`
-- `InventoryCreateService.cs`
-
-Do not paste examples from this file as a complete `.stk`. Listing syntax: [../npc-shop/SKILL.md](../npc-shop/SKILL.md).
+Do not paste examples from this file as a complete `.stk`. NPC listing syntax:
+[../npc-shop/SKILL.md](../npc-shop/SKILL.md). CERA products and service contracts:
+[../cera-shop/SKILL.md](../cera-shop/SKILL.md).
 
 ## Locate
 
 1. Stackable: `stackable/stackable.lst` → `stackable/**/*.stk` (materials, potions, quest items, packages, emblems, …)
 2. Gear / titles / avatars / creatures: `equipment/equipment.lst` → `.equ`
-3. To sell: put the ID in the target `.shp` `[item list]`
+3. To sell through an NPC: put the ID in the target `.shp` `[item list]`. For CERA sales, follow cera-shop's product mapping.
 
 IDs come from `.lst`. Editing `[name]` or file contents does not allocate an ID.
 
@@ -57,7 +52,7 @@ For the current server's NPC exchange path, `[need material]` is one effective *
 
 Equipment recycle uses the server equipment rate, **not** `value ÷ 5`, with a minimum. Equipment buy still prefers `[price]`, else `[value]`; with valid `[need material]` use `price + add price`.
 
-`[cash]` and `[medal]` are item metadata, not the current server's generic CERA or medal price setters. For CERA-shop price and page placement, resolve `etc/cerashop.etc`; for medals or another currency, trace the target handler before editing any field.
+`[cash]` and `[medal]` are item metadata, not the current server's generic CERA or medal price setters. For CERA price/page placement use [cera-shop](../cera-shop/SKILL.md); for medals or another currency, trace the target handler before editing any field.
 
 ## Expiry
 
@@ -124,13 +119,11 @@ Opening should consume the source item and grant the list. Icons may reuse exist
 
 ### Cash-shop package tables
 
-Cash-shop placement and CERA price are controlled by `etc/cerashop.etc`, not by an item's `[cash]` field. The current client maps `[regular package]` to its daily-package page, `[package]` to its main package page, and has character-premium entries on the limited/service UI. Treat page mapping as client-specific: inspect the current client and the existing section before editing, and preserve every non-target row.
+Product prices, placement, moving between pages, contracts, and catalog migration
+are maintained in [cera-shop](../cera-shop/SKILL.md). This skill owns the item's
+reward/use definition; load both when the task changes the catalog and its rewards.
 
-When moving a product between pages, remove its source row and add exactly one destination row. Check both sections afterwards so it cannot be sold twice. This client can display rows in the reverse of their PVF storage order, so verify the actual page order after packing rather than relying on the row order alone.
-
-An individual timed contract needs a product row in the matching CERA section, its `.stk` definition, and a matching `etc/premiumlist_new.etc` item-to-service mapping. Register each new `.stk` ID in `stackable/stackable.lst`.
-
-An all-service or multi-token contract is a separate path: its `[cera package]` must grant the intended tokens, and every token needs its own service mapping. The server also has a special Devil Contract catalog for all-service packages sourced from `[charac premium package]`; do not assume moving that product row to another section preserves the special path. Trace the purchase flow and verify the activated premium state in-game.
+### Level-up tickets
 
 Level-up tickets (e.g. `10006124`): server grants +1 level per use; that ticket's stack limit is 10.
 

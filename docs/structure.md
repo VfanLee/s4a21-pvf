@@ -2,6 +2,11 @@
 
 对应 [`AGENTS.md`](../AGENTS.md)。本仓库是 skill 包，不是解包后的脚本树。
 
+查询或修改中确认了新的可复用事实，交付前同一轮写入对应技能/AGENTS.md 和中文页。
+内容精炼，只写已确认的操作规则和字段含义，保留必要的版本/运行环境范围。
+不写来源叙述、历史案例、参考包名称、一次性数值或不确定的解释，不依赖旧任务附件。
+新主题补齐独立技能、中文页及两边入口；没有变化的知识不重复改写。
+
 ## 打包和解包
 
 | 东西 | 是什么 |
@@ -95,7 +100,7 @@ itemshop/itemshop.lst → 商店 ID → itemshop/*.shp
 
 ## 运行时以谁为准
 
-买价、回收价、期限、礼包发放：看 `ServerS4A21/`（`PvfLib`、`ItemMetadataResolver`、`InventoryCreateService`）。网上教程和其他版本 PVF 只作参考；标签冲突时以 A21 为准。
+各技能中的买卖价格、期限、礼包发放、点券购买及金币掉落规则，适用于本项目的 A21 客户端与服务端。
 
 Script.pvf 里的图标路径**不证明**客户端 NPK 里真有这张图。
 
@@ -103,12 +108,16 @@ Script.pvf 里的图标路径**不证明**客户端 NPK 里真有这张图。
 
 | 要改什么 | 中文 | 模型 |
 | --- | --- | --- |
-| 商店页签、上架、分类、`.shp` | [skills/npc-shop.md](skills/npc-shop.md) | `.agents/skills/npc-shop/SKILL.md` |
-| 材料、药剂、价格、期限、礼包、`.stk` / `.equ` | [skills/items.md](skills/items.md) | `.agents/skills/items/SKILL.md` |
+| NPC 商店页签、上架、分类、`.shp` | [skills/npc-shop.md](skills/npc-shop.md) | `.agents/skills/npc-shop/SKILL.md` |
+| 点券商城上架、售价、页面、契约、商品迁移 | [skills/cera-shop.md](skills/cera-shop.md) | `.agents/skills/cera-shop/SKILL.md` |
+| 道具定义、NPC 道具价格、期限、礼包奖励、`.stk` / `.equ` | [skills/items.md](skills/items.md) | `.agents/skills/items/SKILL.md` |
+| 金币掉落概率、数量、浮动、通关倍率 | [skills/gold-drop.md](skills/gold-drop.md) | `.agents/skills/gold-drop/SKILL.md` |
 
-商店和道具一起改：先改 `.stk` / `.equ`（价格、期限、效果），再把 ID 写进 `.shp` 的 `[item list]`。
+NPC 商店与道具一起改，先改定义再改 `.shp`；点券商城与奖励一起改，同时加载商城和道具技能，
+先核对定义/奖励再改商品表。只有点券商城任务时，不需要 NPC 商店技能。
 
-技能、副本、怪物、掉落：没有单独文档时，仍走对应 `.lst` 读原文，并遵守下面的硬规则。
+技能、副本、怪物、NUT、其他掉落没有独立文档时，在有登记表的情况下走对应 `.lst` 读原文；
+`etc/` 全局表没有统一登记表。所有任务都遵守下面的硬规则。
 
 ## 硬规则
 
@@ -116,10 +125,15 @@ Script.pvf 里的图标路径**不证明**客户端 NPK 里真有这张图。
 - 数字 ID 不是事实，必须经正确 `.lst` 解析后再读文件。
 - 新道具必须同时有空闲 ID、`.lst` 行、定义文件。改名字不会分配 ID。
 - 新增块或新文件：先对照同目录、同扩展名、同用途的 2–3 个近邻。不要凭标签名想象格式。
-- 保留原有标签、反引号、空白、数值顺序和成对 `[/...]`。不要把文档示例粘成完整文件。
+- 保留标签、反引号、数值顺序和成对 `[/...]`；可编辑文本保留空白。
+  Type 1 二进制 PVF 的回读排版可能规范化，需比较解析后的内容与顺序并说明限制。
+  不要把文档示例粘成完整文件。
 - `.shp` 只上架。价格、绑定、效果、期限在道具文件。
 - `[explain]` 是说明文字，不等于效果。图标路径不证明客户端资源存在。
-- 写完必须读回。行为结论要说明实机怎么测。客户端和服务端加载同一份新 PVF；部署后重启或重载以清物品缓存。
+- 写完必须读回。行为结论要说明实机怎么测。客户端和服务端加载同一份新 PVF；
+  重启服务端是已确认的缓存清理方式，重载只在部署环境已验证支持时使用。
+
+输出命名与持续改动清单的约定集中在 [skills/README.md](skills/README.md#本项目输出与改动清单)。
 
 ## 流程
 

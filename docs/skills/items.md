@@ -1,12 +1,7 @@
 # 材料、消耗品与可堆叠道具
 
-对应 [`.agents/skills/items/SKILL.md`](../../.agents/skills/items/SKILL.md)。上架语法见 [npc-shop.md](npc-shop.md)。
-
-依据当前 `Script.pvf` 与：
-
-- `ServerS4A21/Server/DfoServer/Game/Inventory/ItemMetadataResolver.cs`
-- `StackableExpirationPolicyResolver.cs`
-- `InventoryCreateService.cs`
+对应 [`.agents/skills/items/SKILL.md`](../../.agents/skills/items/SKILL.md)。
+NPC 上架语法见 [npc-shop.md](npc-shop.md)，点券商城商品与契约见 [cera-shop.md](cera-shop.md)。
 
 下面示例是结构骨架。实机 `.stk` 还有未列出字段，**不要把示例粘成完整文件**。已有标签改原值，不要重复添加。
 
@@ -30,7 +25,7 @@
 | `stackable/**/*.stk` | 道具定义 |
 | `equipment/equipment.lst` | 装备 / 称号 / 装扮 / 宠物 ID → `.equ` |
 | `equipment/**/*.equ` | 装备类定义 |
-| 目标 `itemshop/*.shp` | 要出售时，把 ID 写入 `[item list]` |
+| 目标 `itemshop/*.shp` | NPC 出售时，把 ID 写入 `[item list]`；点券商城使用独立商品表，见商城技能 |
 
 ID 由 `.lst` 映射。改 `[name]` 不会生成新 ID。
 
@@ -146,15 +141,10 @@ ID 由 `.lst` 映射。改 `[name]` 不会生成新 ID。
 
 ### 商城礼包表
 
-商城放在哪个页面、点券卖多少钱，取决于 `etc/cerashop.etc`，不是只给道具写 `[cash]`。当前客户端把 `[regular package]` 显示为日常礼包页，`[package]` 显示为主礼包页，角色服务类商品出现在限时/服务界面。页面归属是客户端行为：每次都要对照当前客户端和已有段，不把这个映射外推到别的版本。修改前完整读取目标段，只动本次目标行，其他行保持原样。
+商城售价、页面、跨页移动、契约及商品迁移流程统一放在 [cera-shop.md](cera-shop.md)。
+本页负责礼包奖励与道具使用定义；同时改上架与奖励时，两份一起读。
 
-把商品从一个页面移动到另一个页面时，要同时做两件事：从来源段删除该商品行，并在目标段只新增一行。读回时两段都要查，避免同一个商品在两页重复出售。
-
-这个客户端的页面显示顺序可能和 PVF 中记录顺序相反。写完打包后必须打开对应商城页核对实际顺序，不能只凭文件行号判断。
-
-新增**单项**限时契约要闭合三层关系：目标商城段的商品行、对应 `.stk`、`etc/premiumlist_new.etc` 里的“道具 → 服务类型/期限”映射。所有新增 `.stk` ID 还要登记 `stackable/stackable.lst`。
-
-“一次开通多项服务”的契约要单独处理：顶层 `[cera package]` 必须准确发放所有服务令牌，每个令牌也都要有服务映射。服务端还对 `[charac premium package]` 的魔王全服务礼包有专门处理；不能假设把商品行移动到其他段后，这条专门路径仍然有效。必须走完整购买流程并核对实际激活的服务状态。
+### 直升券
 
 直升类可塞已有升级券（如 `10006124`）：每次使用只升 1 级；该券单格堆叠上限是 10。
 

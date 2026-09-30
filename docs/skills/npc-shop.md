@@ -1,12 +1,11 @@
 # NPC 商店
 
 对应 [`.agents/skills/npc-shop/SKILL.md`](../../.agents/skills/npc-shop/SKILL.md)。价格、效果见 [items.md](items.md)。
+点券商城的商品、售价与页面使用独立的 [cera-shop.md](cera-shop.md)。
 
 **页签** = `[tab]`。**分类** = `[use category]` / `[category entry]`。两者不是同一层。
 
 改列表：动 `.shp`。改买价 / 回收 / 兑换：动道具文件。
-
-依据：当前 `itemshop/*.shp`、`npc/*.npc`，以及 `ServerS4A21/Tool/PvfLib/Models/ItemShopFile.cs`。
 
 下面示例是**成对闭合的结构骨架**。实机文件还有未列出字段，改时保留。
 
@@ -83,7 +82,7 @@
 
 每个 `[tab]` 同级。不要把第二个 `[item list]` 写进第一个页签。`[item list]` 顺序即显示顺序。
 
-参考：`84_Kanna.shp`（单页签）、`StackableShop2.shp`（索西雅）。下列为截取，不是完整商店。
+下列为结构片段，不是完整商店。
 
 ```text
 [sell info]
@@ -104,7 +103,8 @@
 
 ### 职业分类 + 页签混用
 
-参考：`86_Mintai.shp`。A21 `basic job` 现有编号包括 `0,1,5,3,4,2,6,7,8,11,10,9,12,13`。未核对客户端分类定义时不要改号。不要把 `basic job` 的编号套到 `job` / `expert job` / `pvp job`。
+A21 `basic job` 编号包括 `0,1,5,3,4,2,6,7,8,11,10,9,12,13`，保留分类编号。
+不要把 `basic job` 的编号套到 `job` / `expert job` / `pvp job`。
 
 ```text
 [sell info]
@@ -144,7 +144,7 @@
 | 上架 / 下架 / 换页签 | `.shp` 的 `[item list]` / `[tab]` |
 | 金币买价 | 道具 `[price]`（普通可堆叠没有则回退 `[value]`） |
 | 材料兑换 | 道具 `[need material]`；材料 ID 再走 `stackable.lst` |
-| 点券商城 | `etc/cerashop.etc` 的商品行；道具 `[cash]` 不会设置当前服务端的点券价 |
+| 点券商城 | 转到独立的 [cera-shop.md](cera-shop.md) |
 | 胜点 / 其他货币 | 先追踪目标客户端和服务端的处理路径；不能只凭 `[medal]` 推断定价方式 |
 
 实机：找到 NPC → 打开商店 → 核对页签 / 职业分类 / 顺序 → 看价格 → 试买或兑换 → 看中文是否乱码。

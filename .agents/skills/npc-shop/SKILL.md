@@ -2,9 +2,9 @@
 name: npc-shop
 description: >-
   Edit A21 NPC shops in itemshop/*.shp: tabs, item lists, job categories,
-  listing, new shops. Use when the PVF task touches NPC shop, itemshop, .shp,
-  listing, tabs, [tab], [item list], or [use category]. Price lives on the item
-  file. Read repo AGENTS.md first.
+  listing, new shops. Use for NPC shop, itemshop, .shp, NPC tabs, [item list],
+  or [use category]. NPC price lives on the item file. CERA cash-shop requests
+  belong to cera-shop. Read repo AGENTS.md first.
 ---
 
 # A21 NPC shops
@@ -13,7 +13,7 @@ Tab = `[tab]`. Category = `[use category]` / `[category entry]`. Not the same la
 
 Change the list: edit `.shp`. Change buy/sell/exchange: edit the item file — [../items/SKILL.md](../items/SKILL.md).
 
-Sources: current `itemshop/*.shp`, `npc/*.npc`, and `ServerS4A21/Tool/PvfLib/Models/ItemShopFile.cs`.
+CERA cash-shop product records, prices, and pages: [../cera-shop/SKILL.md](../cera-shop/SKILL.md).
 
 ## Locate
 
@@ -64,7 +64,7 @@ Each `[tab]` is a sibling with its own `[item list]`. Do not nest a second `[ite
 [/sell info]
 ```
 
-Refs: `84_Kanna.shp` (one tab), `StackableShop2.shp` (索西雅, many tabs). Snippets above are truncated, not full shops.
+Snippets above are structural fragments, not full shops.
 
 ### Shop-level categories mixed with tabs
 
@@ -93,7 +93,7 @@ Refs: `84_Kanna.shp` (one tab), `StackableShop2.shp` (索西雅, many tabs). Sni
 [/sell info]
 ```
 
-Ref: `86_Mintai.shp`. `[category entry] [id]` is a class ID for the current `[use category]`, not a shop ID or item ID. A21 `basic job` IDs include `0,1,5,3,4,2,6,7,8,11,10,9,12,13`. Do not renumber without checking client category defs.
+`[category entry] [id]` is a class ID for the current `[use category]`, not a shop ID or item ID. A21 `basic job` IDs include `0,1,5,3,4,2,6,7,8,11,10,9,12,13`. Preserve the category numbering.
 
 PVF also has `job`, `expert job`, `expert job non filter`, `pvp job`. Do not reuse `basic job` IDs on other categories.
 
@@ -106,7 +106,7 @@ Current `ItemShopFile` **does not extract items** from either. Keep that NPC's e
 
 ### Daily rotation
 
-`OneADayItemShop.shp`: the plain `[sell info]` list may be empty; rotation lives in `[one a day start time]` / `[one a day item]`. That is not a relocated `[item list]`. Selection rules are unconfirmed: keep the original shape and verify in-game.
+Daily rotation uses `[one a day start time]` / `[one a day item]`. Preserve the existing shape and verify the rotation in-game.
 
 ## Write rules
 
@@ -130,7 +130,7 @@ GM/tool shop indexes cannot prove category tabs or tabless shops. Verify categor
 1. `npc.lst` → `.npc` → `[role]` shop entry → shop ID
 2. `itemshop.lst` → `.shp`
 3. Check `[NPC]`, `[type]`, `[message]`, `[sell info]` shape
-4. Collect every positive item ID; resolve each registry; read `[name]`, `[price]`, `[value]`, `[need material]`, and expiry. For CERA or medal sales, resolve the actual sale system before assigning a price field.
+4. Collect every positive item ID; resolve each registry; read `[name]`, `[price]`, `[value]`, `[need material]`, and expiry. For medal sales, resolve the actual sale system before assigning a price field. Route CERA sales to cera-shop.
 5. List secret shop, daily rotation, expert job, and log-only entries separately; they are not normal sale facts
 
 ## Write and verify
@@ -140,7 +140,7 @@ GM/tool shop indexes cannot prove category tabs or tabless shops. Verify categor
 | List / unlist / retab | `.shp` `[item list]` / `[tab]` |
 | Gold buy price | item `[price]` (plain stackables fall back to `[value]`) |
 | Material exchange | item `[need material]`; resolve material IDs in stackable |
-| CERA shop | `etc/cerashop.etc` product row; item `[cash]` does not set the current server's CERA price |
+| CERA shop | Follow [cera-shop](../cera-shop/SKILL.md) |
 | Medals / other currencies | Trace the target client's and server's handler first; do not infer a price path from `[medal]` alone |
 
 In-game: find the NPC → open shop → check tabs / job categories / order → check price → buy or exchange → check Chinese text. If the tool index disagrees, trust the client.

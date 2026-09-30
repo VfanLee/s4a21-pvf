@@ -10,7 +10,7 @@ Reply to the user in Simplified Chinese.
 
 Chinese learning notes for the human maintainer live in [`docs/`](docs/README.md). Do not load them as edit instructions.
 
-When you learn, correct, or add a PVF fact in this file or in `.agents/skills/`, update the matching `docs/` page in the **same change** so both sides share one set of facts.
+Before delivering a PVF query or edit, persist newly confirmed, reusable rules in the matching `.agents/skills/` topic (or this structural guide) and its Chinese `docs/` page in the **same change**. Include read-only investigations. Keep instructions concise and directly usable, with essential version/runtime boundaries. Omit source narratives, historical comparisons, named reference packs, one-off IDs/counts, and uncertain interpretations. Future agents must not need to resupply a previously analyzed pack. Add new topics to both routing indexes; do not rewrite unchanged knowledge.
 
 ## Packed vs unpacked
 
@@ -74,10 +74,19 @@ Example: 卡妮娜 NPC ID `3`, shop ID `84`, file `itemshop/84_Kanna.shp`. `[NPC
 
 ## Runtime meaning
 
-Interpret buy/sell price, expiry, and package grant using `ServerS4A21/` (`PvfLib`, `ItemMetadataResolver`, `InventoryCreateService`). Generic DNF tutorials and other PVF versions are fill-in only; A21 tags win on conflict.
+Runtime rules in these skills apply to this project's A21 client/server. Preserve that scope when interpreting prices, expiry, package grants, CERA purchases, and gold drops.
 
 Icon / resource paths in Script.pvf do not prove the client NPK exists.
 
 ## Next
 
 For edit workflow and hard rules, read [`.agents/skills/SKILL.md`](.agents/skills/SKILL.md). Then load only the domain skill it routes to; do not duplicate workflow rules in this structural guide.
+
+| Task | Domain skill |
+| --- | --- |
+| NPC `.shp` listings, tabs, categories | [npc-shop](.agents/skills/npc-shop/SKILL.md) |
+| CERA cash-shop products, prices, pages, contracts, catalog migration | [cera-shop](.agents/skills/cera-shop/SKILL.md) |
+| Item definitions, package rewards, expiry, bind, use effects | [items](.agents/skills/items/SKILL.md) |
+| Gold drop probability, amount, variance, clear-card multipliers | [gold-drop](.agents/skills/gold-drop/SKILL.md) |
+
+For combined tasks, load each involved domain; cash-shop listing alone does not require the NPC-shop skill.
