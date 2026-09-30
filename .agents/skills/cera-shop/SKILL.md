@@ -31,7 +31,8 @@ Preserve all non-target columns.
 | `[charac premium package]` | 9 | 3 | product 1, item 2, duration days 8; catalog count is 1 |
 
 For avatars, the purchase path also reads the equipment's `[avatar type select]`:
-each offer has 7 tokens, with duration at column 1 and CERA price at column 4.
+each offer starts with 7 numeric tokens, with duration at column 1 and CERA price
+at column 4. Socket descriptors can follow the numeric offers; preserve them.
 A resolved positive offer price overrides the catalog price. Inspect both the
 product's tier and `.equ` before changing an avatar price or duration.
 
@@ -50,6 +51,33 @@ destination layout. Read both sections back. Scan product IDs across all catalog
 sections: the server stores them in one dictionary and later parsed rows overwrite
 earlier collisions. Allocate replacements only after checking the final catalog;
 preserve item IDs, prices, and other fields unless explicitly included in the task.
+
+## Rare avatars and vouchers
+
+Resolve avatar IDs through `equipment/equipment.lst`; scan both `avatar/` and
+`at_avatar/` paths. Rare avatars use `[grade] 3`; `[rarity]` is a separate field.
+Check each job and color for the eight equipment slots: hat, hair, face, breast,
+coat, pants, waist, and shoes. Skin and aura are separate slots. Keep distinct
+wing/shoulder alternatives; a second item for one slot can be a valid appearance.
+
+Use named, normal definitions. Compare animation job, variation, layer/script,
+selectable abilities, and set-effect indexes before treating definitions as
+duplicates. GM items and unidentified placeholders do not establish a sellable set.
+Rare clones have `[item category]` `clear avatar`; check the grade and eight slots
+to avoid listing advanced clones as rare avatars.
+
+For the current server, voucher payment (`paymentMode=1`) with grade 3 and offer
+tier 3 consumes one rare-avatar voucher (`2681594`) and sets the CERA charge to 0.
+Confirm the third `[avatar type select]` offer has duration 0. The catalog row is:
+
+```text
+productId itemId 3 0 0 -1
+```
+
+Retain the `.equ` prices and other offer data for listing-only changes. Voucher
+payment is a purchase mode; positive offer prices still apply to CERA purchases.
+Verify voucher deduction, permanent delivery, preview, and display order using
+the actual client's selected sort mode before confirming first-page placement.
 
 ## Catalog migration
 
