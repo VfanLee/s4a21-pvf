@@ -10,6 +10,7 @@
 | 点券商城上架、售价、页面、契约、商品迁移 | [cera-shop.md](cera-shop.md) |
 | 道具定义、NPC 道具价格、期限、礼包奖励、券、`.stk` / `.equ` | [items.md](items.md) |
 | 金币掉落概率、数量、浮动、通关倍率 | [gold-drop.md](gold-drop.md) |
+| 怪物物品掉落池、任务材料掉落概率与数量 | [item-drop.md](item-drop.md) |
 
 NPC 商店和道具一起改：先改 `.stk` / `.equ`，再写 `.shp` 上架。
 点券商城和道具一起改：同时读商城与道具两份技能，先核对定义和奖励，再改 `cerashop.etc`。

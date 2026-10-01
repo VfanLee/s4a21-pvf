@@ -21,6 +21,7 @@ Reply to the user in Simplified Chinese.
 | CERA cash-shop listings, prices, pages, contracts, catalog migration | [cera-shop/SKILL.md](cera-shop/SKILL.md) |
 | Item definitions, NPC item prices, expiry, package rewards, tickets, `.stk`/`.equ` | [items/SKILL.md](items/SKILL.md) |
 | Gold drop probability, amount, variance, clear-card multipliers | [gold-drop/SKILL.md](gold-drop/SKILL.md) |
+| Monster item pools, quest-material drop probability/count | [item-drop/SKILL.md](item-drop/SKILL.md) |
 
 For NPC shop + item edits, update the `.stk`/`.equ` first, then the `.shp` listing. For CERA shop + item edits, load cera-shop and items; close item definitions/rewards before listing in `cerashop.etc`. Listing or pricing alone does not require unrelated domain skills.
 
@@ -74,3 +75,10 @@ read-only close → (after permission) minimal edit → read-back → pack match
 ## Replies
 
 Lead with: can it be done, which files, main risks, next step. Attach IDs, paths, and raw tags when needed.
+
+## Abyss unlock investigations (A21)
+
+- Close the chain `n_quest/quest.lst → registered .qst → worldmap/*.wdm [hell quest]`. An archived `.qst` with no registry row does not prove its task is available; normalize registry path separators before comparing.
+- Compare `[level]`, `[type]`, `[int data]`, `[pre required quest]`, `[reward type]` and `[reward int data]` together. A dialogue introduction with item rewards is not an unlock task granting `[hell challenge]`.
+- Restore region gates and removed quest registry rows together when reversing a shared unlock task. Append only the required missing rows; preserve unrelated target-only registrations rather than replacing the whole registry. Inspect baseline dangling quest references separately; do not silently activate unregistered legacy tasks.
+- `etc/hellparty.etc [difficulty]` controls a separate deep-abyss encounter configuration; distinguish its restoration from unlock-flow restoration. Verify character completion state in-game; restoring PVF does not itself clear saved quest progress.

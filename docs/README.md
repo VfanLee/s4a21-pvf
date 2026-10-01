@@ -14,6 +14,7 @@
 | 点券商城的上架、售价、页面、契约、商品迁移 | [skills/cera-shop.md](skills/cera-shop.md) |
 | 道具定义、NPC 道具价格、期限、礼包奖励（`.stk` / `.equ`） | [skills/items.md](skills/items.md) |
 | 金币掉落概率、数量、浮动、通关倍率 | [skills/gold-drop.md](skills/gold-drop.md) |
+| 怪物物品掉落池、任务材料掉落概率与数量 | [skills/item-drop.md](skills/item-drop.md) |
 
 ## 和 skills 的对照
 
@@ -25,6 +26,7 @@
 | [skills/cera-shop.md](skills/cera-shop.md) | [`.agents/skills/cera-shop/SKILL.md`](../.agents/skills/cera-shop/SKILL.md) |
 | [skills/items.md](skills/items.md) | [`.agents/skills/items/SKILL.md`](../.agents/skills/items/SKILL.md) |
 | [skills/gold-drop.md](skills/gold-drop.md) | [`.agents/skills/gold-drop/SKILL.md`](../.agents/skills/gold-drop/SKILL.md) |
+| [skills/item-drop.md](skills/item-drop.md) | [`.agents/skills/item-drop/SKILL.md`](../.agents/skills/item-drop/SKILL.md) |
 
 ## 同步约定
 

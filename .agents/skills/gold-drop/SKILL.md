@@ -72,6 +72,23 @@ Tournament DGN `[tournament clear reward gold rate]` is a direct multiplier in
 the tournament path (16 means ×16). Pickup applies equipped gold bonuses and
 carry limits, so distinguish generated gold from credited gold.
 
+The common table's third column is a percentage, not a second gold amount.
+With a positive base and variance at least 100, rolls at or below -100 percent
+produce nonpositive raw gold and trigger the monster minimum of 1. Increasing
+the base does not remove this cause; use variance 0 for a fixed amount before
+the difficulty multiplier, or a range below 100 for bounded percentage variation.
+
+The base-gold column is parsed as Int32; its positive field ceiling is
+2,147,483,647, not a safe end-to-end drop limit. Monster variance multiplies
+`delta * baseGold` in Int32 before division, and pickup likewise multiplies
+`dropGold * equippedBonusPercent` in Int32 before division. Bound those products,
+the pre-difficulty sum, and the floating-point difficulty result separately.
+Ground gold packets use a UInt32 amount; the clear-card UInt16 display limit
+does not apply to them. Pickup credits only available carrying capacity, using
+the greater of the PVF `etc/(r)goldlimitbylevel.etc` level limit and the saved
+character limit. An actual maximum therefore depends on variance, difficulty,
+equipment bonuses, and the character's current balance and carrying limit.
+
 ## How to change and verify
 
 - For an amount multiplier, multiply only the requested level rows' base-gold

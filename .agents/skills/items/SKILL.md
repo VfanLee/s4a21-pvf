@@ -77,15 +77,47 @@ Equipment recycle uses the server equipment rate, **not** `value ÷ 5`, with a m
 - `[expiration date]`: `` `yyyy-MM-dd HH:mm:ss` ``, `yyyy-MM-dd`, parseable `yyyyMMdd`, or Unix seconds; CST.
 - Both present: server prefers positive `[usable period]`.
 - Expiry is stored on the **instance**. Editing PVF does not refresh old items.
+
+Distinguish normal item creation from rental grants. The current server rental
+handler explicitly supplies an instance expiry of current Unix time plus
+`RentalWeaponRequestCodec.RentalDurationSeconds` (86400); this overrides the
+ordinary equipment expiry resolver. A `.equ` usable-period change therefore
+does not control that rental grant's actual lifetime. For newly claimed items
+already shown expired, check grant path, instance timestamp, server/client
+clock and protocol consumption before treating it as a stale PVF date.
+Removing usable period is not a repair when the requested rental duration
+must remain; do not claim a PVF-only fix without identifying a relevant field.
 - `[stat change duration]` = effect length; `[cool time]` = use cooldown (often ms). **Neither** is bag expiry.
 
 To drop expiry on future instances: delete the whole `[expiration date]` (not empty string, not a far date) and confirm there is no `[usable period]`. Uncovered new instances get `ExpireTime=0`.
+
+For a name-prefix weapon expiry edit, resolve equipment.lst entries, match the
+actual `[name]` prefix, and require `[equipment type]` `[weapon]`; a name alone
+does not establish the slot. Remove both applicable expiry tags and leave
+already-unlimited matches unchanged. Type 1 payloads use five-byte tokens;
+removing only the expiry tag/value tokens preserves all other tokens and string
+offsets. Reopen the output and compare every file payload against the source,
+allowing differences only at the planned paths and removed token ranges.
 
 Example: `490002458` 史诗 Buff potion — remove `[expiration date]`; keep `[stat change duration]` / `[cool time]`. The file also has `[usable event]` and `[item category] event`; removing expiry does not lift event limits. Verify by **buying a new one**.
 
 ## Materials
 
 Price-only edits: price tags only. Before changing use, search recipes, quests, shops, exchanges for that ID. Do not retag a material as a consumable to “make it listable”.
+
+### Automatic pickup and global drops
+
+For A21 materials picked up on proximity, inspect `etc/autorooting.etc`
+`[auto rooting index]` after resolving their IDs through `stackable.lst`.
+To disable listed items' automatic pickup, remove only those integer ID entries
+and preserve all other entries and the paired closing tag. Gold ID `0` is a
+separate entry; do not replace unwanted IDs with `0`. Verify manual pickup and
+proximity behavior after restarting the client with the edited archive.
+This list is separate from drop generation: the current server's
+`etc/worlddrop.etc` `[world drop]` entries use monster-level groups and weighted
+item pools, which can make a material appear across unrelated dungeons.
+Changing pickup membership does not disable those drops. A logged `GET_ITEM`
+proves a client pickup request, not whether the player pressed a pickup key.
 
 `3042` 无色大晶体: `[need material] 3037 100`, exchange gold from `[price] 2000`, recycle `400/5=80`.
 
