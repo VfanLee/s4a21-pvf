@@ -21,6 +21,23 @@ Do not paste examples from this file as a complete `.stk`. NPC listing syntax:
 
 IDs come from `.lst`. Editing `[name]` or file contents does not allocate an ID.
 
+## Remove unwanted definitions
+
+Unlisting and definition cleanup are separate scopes. For authorized cleanup,
+resolve exact ID/path pairs and scan all retained PVF files for incoming item-ID
+and definition-path references, including nested packages, shops, quests, and
+text scripts. In this A21 Type 1 format, integer tokens use type 0; type 2 is
+floating-point. Type 3 file payloads are UTF-16LE text. Classify matching numbers
+in context rather than assuming every occurrence is an item reference. Exclude
+definitions being removed from the incoming-reference check.
+
+Remove each unused registration and its matching definition together. Preserve
+all retained pairs and their order. Packed deletion must rebuild file/path indexes
+and the archive hash table; an empty definition is not file removal. Reopen and
+verify absent paths/IDs, exact retained payloads, and the expected file-count
+decrease. Include deleted paths and the changed registry in the change log.
+PVF reference checks do not inspect existing inventory/mail/database instances.
+
 `[stackable type]`: `[material]` is usually a material; potions are often `[waste]`, with other usable types. Keep the item's original type. Do not change type just to set a price (inventory tab and use rules follow type).
 
 ## Shared fields
@@ -104,6 +121,17 @@ Need all of: unused ID (re-check the final PVF `.lst`), `.lst` mapping, new defi
 ### Fixed package `[cera package]`
 
 `[package data]` repeats **item ID, count**. Positive item IDs only; gold ID `0` is invalid. Do not mix with random `[booster info]`. Avatar packages are often split by job.
+
+Existing A21 packages can also have `[package data selection]`, repeating item
+ID/count pairs. Include every such block in the reward closure, alongside fixed
+and nested rewards; checking only `[package data]` misses selectable rewards.
+Preserve selection behavior when making listing-only changes and verify the
+choice interface in-game.
+
+A literal `name_ID` is a localization placeholder, not evidence that the reward
+definition is invalid. Check actual localization files, package contents, and
+explicit series/job information before assigning a display name. A mapping in
+`n_string.lst` does not prove the referenced localization file is present.
 
 Minimal fragment (copy remaining fields from a neighbor; not a complete file):
 

@@ -39,6 +39,19 @@ For skills, dungeons, monsters, NUT, or other drops without a domain skill, reso
 - After writes, read the files back. Behavior claims must say how to test in-game. Client and server load the **same** new PVF; restart the server to clear process-level metadata caches. Use reload only when that deployment's reload path is separately verified.
 - Before delivering queries or edits, persist newly confirmed, reusable rules in the relevant skill or `AGENTS.md` and its matching Chinese page under [`docs/`](../../docs/README.md) in the same change. Keep essential version/runtime scope; omit source narratives, historical cases, named reference packs, one-off values, and uncertain interpretations. Instructions must work without previously supplied packs. Update both routing indexes for new topics. Do not load `docs/` as edit instructions.
 
+## String encoding checks
+
+For this A21 PVF format, Type 1 string references distinguish narrow `sTrA`
+from UTF-16LE `sTrW` using the offset's low bit. Narrow-table bytes can contain
+legacy GBK; decoding every narrow string as UTF-8 can introduce replacement
+characters. Compare raw bytes and source reference type when diagnosing text.
+Preserve Unicode references for migrated Chinese text; a writer's string-cache
+reuse can select a narrow copy instead of the source's Unicode copy. Check
+that forced Unicode writes return an offset with low bit 1; a preference flag
+that falls back to the narrow cache is insufficient. Validate
+names and descriptions with the consumer's decoder, not only the writer's reader.
+Recover damaged text from intact source strings, not guessed substitutions.
+
 ## Project output and change records
 
 - Preserve input and baseline archives. Unless the user specifies another destination, save the validated new PVF in this project's `dist/` as `Script_yyyyMMdd_HHmmss.pvf`, using Beijing time (UTC+8). Check for name collisions and choose a new timestamp; never overwrite an existing output. Save a temporary archive, reopen and verify it, then publish the new filename.

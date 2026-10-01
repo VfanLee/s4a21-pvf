@@ -79,6 +79,13 @@ payment is a purchase mode; positive offer prices still apply to CERA purchases.
 Verify voucher deduction, permanent delivery, preview, and display order using
 the actual client's selected sort mode before confirming first-page placement.
 
+Separate catalog presence, definition support, and in-game visibility in reports.
+After appending rare avatars, compare product-ID allocation with existing avatar
+groups for each job; global uniqueness alone does not establish client visibility.
+If only a subset appears, check the active catalog, job/category filtering, and
+hide configuration before adding duplicate products. Verify each job's visible
+pages with the actual client before calling the listing complete.
+
 ## Catalog migration
 
 1. Compare the target and import catalog sections, item registries, definitions,
@@ -100,6 +107,51 @@ the actual client's selected sort mode before confirming first-page placement.
 6. Reopen the result: compare record counts, added definitions, registry prefix and
    appended pairs, product IDs, target rows, price exceptions, and non-target content.
    Check the change-workbook paths against the actual content changes and additions.
+
+For partial avatar migrations, protect the retained catalog rows and their actual
+equipment definitions/registry mappings. Follow reward dependencies even when
+the product's own definition already exists. Check source-internal duplicate
+product IDs too: copying a reference catalog can reproduce purchases that resolve
+to a different item. Record any authorized replacement IDs separately from
+item/content/price synchronization. Normalize slash direction and case before
+reporting ID-to-path conflicts; do not duplicate equivalent paths.
+
+Classify resource failures by tag. `[avatar package preview info]` points to a
+package display image; a missing preview does not establish that reward icons
+or worn avatars are missing. Report each category separately. Keep any exception
+to resource completeness explicit rather than dropping products silently.
+
+When pruning packages against an original support boundary, distinguish the current
+edit target from the comparison archive. Resolve each package and its complete
+nested reward graph through the comparison archive's registries and actual files;
+an ID match with a different path requires review. Remove the whole unsupported
+catalog record rather than silently reducing its rewards. Compare retained items'
+image/animation references with the comparison definitions before claiming no new
+client assets are required; definition support alone does not prove in-game art.
+Unlisting does not require deleting definitions or registrations that other systems
+may reference. Preserve retained rows, order, prices, and all other catalog sections.
+
+For completeness audits, enumerate the target's registered package definitions
+and compare distinct item IDs with every relevant shop section. Filtering an import
+catalog by target support yields only their intersection, not all supported target
+packages. Distinguish missing original listings from definitions that were never
+listed in either catalog. Inspect package type and reward graph, not names alone;
+report activities, placeholders, nested reward boxes, and unresolved rewards
+separately. A complete definition graph is a support candidate, not proof of valid
+client art, purchase behavior, or an established CERA price.
+
+When listing previously unlisted original packages, CERA prices come from the
+catalog, not the item's NPC `[price]`. If no original listing exists, apply the
+user's pricing rule and record the existing comparison product. Compare actual
+package kinds; the generic `stackable/cash/` directory is not a shared series.
+Do not discard otherwise supported packages merely because their names are
+localization placeholders; follow the item skill's name checks.
+
+The package catalog's final field is the job filter. Existing common products
+can use `-1`; copy the verified common-product layout instead of duplicating one
+unrestricted item across invented job codes. For missing or misspelled item job
+fields, inspect reward avatars' usable-job restrictions before assigning a page;
+conflicting restrictions require review rather than a guessed job.
 
 ## Contracts and resources
 
