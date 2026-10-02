@@ -6,17 +6,18 @@
 
 | 要改什么 | 读 |
 | --- | --- |
-| NPC 商店页签、上架、分类、`.shp` | [npc-shop.md](npc-shop.md) |
+| 城镇/赛丽亚房间 NPC 放置、商店页签、上架、分类、`.shp` | [npc-shop.md](npc-shop.md) |
 | 点券商城上架、售价、页面、契约、商品迁移 | [cera-shop.md](cera-shop.md) |
-| 道具定义、NPC 道具价格、期限、礼包奖励、券、`.stk` / `.equ` | [items.md](items.md) |
+| 道具定义、NPC 道具价格、期限、礼包与任务奖励、券、`.stk` / `.equ` | [items.md](items.md) |
 | 金币掉落概率、数量、浮动、通关倍率 | [gold-drop.md](gold-drop.md) |
-| 怪物物品掉落池、任务材料掉落概率与数量 | [item-drop.md](item-drop.md) |
+| 全局材料掉落、怪物物品掉落池、任务材料掉落概率与数量 | [item-drop.md](item-drop.md) |
+| 副本难度表、`.dgn` 难度配置、原版对比、旧副本入口 | [dungeon-difficulty.md](dungeon-difficulty.md) |
 
 NPC 商店和道具一起改：先改 `.stk` / `.equ`，再写 `.shp` 上架。
 点券商城和道具一起改：同时读商城与道具两份技能，先核对定义和奖励，再改 `cerashop.etc`。
 只改上架或售价时，按对应销售系统选择技能，不自动加载其他类别。
 
-技能、副本、怪物、NUT、其他掉落没有独立技能时，仍在有登记表的情况下走对应 `.lst` 读原文。
+技能、副本的其他配置、怪物、NUT、其他掉落没有独立技能时，仍在有登记表的情况下走对应 `.lst` 读原文。
 `etc/` 全局表没有统一登记表；所有任务都遵守下列硬规则。
 
 ## 硬规则

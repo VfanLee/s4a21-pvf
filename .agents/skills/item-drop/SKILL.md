@@ -1,6 +1,6 @@
 ---
 name: item-drop
-description: Inspect or edit A21 monster item pools and quest-item drop quantities/probabilities.
+description: Inspect or edit A21 global material drops, monster item pools, and quest-item drop quantities/probabilities.
 ---
 
 # A21 item drops
@@ -26,7 +26,40 @@ separately from `[item]` rewards; dropping a rank-themed item does not establish
 rank. Distinguish unique display names from registered templates, and resolve
 map spawns before including alternate/event templates in a dungeon edit.
 
+## Global material drops
+
+`etc/worlddrop.etc` `[world drop]` contains monster-level groups: level,
+one reserved integer, item-ID/weight pairs, then the standalone `-1` terminator.
+Resolve target items in `stackable.lst`; inspect every group, not just the first
+text match. To disable only a target's global source, set its weight to `0` in
+all matching pairs, preserving IDs, group headers, other pairs, and terminators.
+Do not remove only an ID, replace it with gold ID `0`, or edit pickup membership
+as a substitute for disabling drops. Removing a complete pair must preserve
+the parser's pair alignment.
+
+Count matches as parsed item-ID/weight pairs and report their monster-level
+groups, not raw numeric text hits. A level group can exist without the target
+item; absence of that pair is not absence of the level group. Check both the
+group's membership and weight before explaining excluded levels. Line wrapping
+does not delimit groups; the standalone terminator does.
+
+The current server `WorldDropSystem` ignores item IDs <= 0 and weights <= 0.
+It uses monster level, supports generation at levels 1–199, and caches the
+table until process restart. Positive weights sum to W; trigger threshold is
+W against `Next(100000)`, then one item is selected by relative weight and
+one unit emitted. Total weight affects the shared trigger, not just selection;
+do not redistribute disabled weights to other items without a separate request.
+This disables only world-drop entries, not `.mob` pools, area materials,
+independent drops, or quest rewards. Verify those separately if all sources
+must be removed. Read back every target weight and compare unrelated entries.
+
 ## Generic equipment drops
+
+In this project's current ServerS4A21, `MonsterDropConfig` loads only
+`etc/itemdropinfo_monseter.etc`; no C# loader reference to
+`etc/itemdropinfo_monseter_extra.etc` is present. Do not promise additive drops,
+elite-only drops, or extra-file overrides from its filename. Other server
+implementations need their own loader/caller verification.
 
 The current server's generic equipment branch is distinct from `.mob` `[item]`.
 It reads `etc/itemdropinfo_monseter.etc` `[drop prob]` in seven-value rows:
@@ -42,7 +75,39 @@ does not by itself raise a specific rarity's selection probability.
 Do not apply this branch's difficulty multiplier to `.mob` material pools,
 or extend these rules to hell, independent, and clear-card equipment paths.
 
-## Clear-card items
+## Coverage and special dungeon rewards
+
+The `itemdropinfo_*` tables do not cover every reward source. Close the actual
+dungeon's `DungeonDropDefinitionCatalog` policy and settlement branch before
+applying global settings. Standard policy also allows `.mob` pools, area
+materials, independent drops and world drops. Impossible policy permits only
+gold, independent and dimension monster-drop sources; classify from `.dgn`
+`[impossible dungeon classification]` and verified shared solo/party metadata,
+not an "ancient" or event display name. Licensed policy disables ordinary
+monster sources and uses `etc/dungeonetc/licensedungeoninfo.etc` rewards.
+Dimension dungeons use `etc/dimensiongatedroplist.etc` normal/set chronicle
+pools by job/grow type for dedicated monster rewards and free/paid item cards;
+their card gold and paid-card cost still use the common settlement configuration.
+Hell equipment generation uses `etc/itemdropinfo_monster_hell.etc`, but its
+caller can additionally generate independent drops and epic pieces. Determine
+event rewards from the concrete dungeon/quest/special-mode caller; an event
+name does not select a universal event drop table.
+
+## Hell rarity table parsing
+
+For current `HellMonsterDropConfig`, `etc/itemdropinfo_monster_hell.etc`
+`[basis of rarity dicision]` starts with the row count, followed by exactly
+seven integers per row. Whitespace/newlines do not delimit rows; a visually
+six-value row consumes the next line's first integer and shifts later rows.
+Only each row's first six values are used as cumulative rarity 0..5 thresholds
+against a 1..1000000 roll; preserve the seventh value without assigning it
+a rarity effect. Hell difficulty 1 selects row 0 (very hard), 2 selects row 1
+(hard); this is separate from dungeon difficulty. Validate count and parsed
+groups before interpreting probabilities. These are conditional rarity rolls,
+not per-monster drop rates; epic-buff rerolls and empty-pool fallback can alter
+the delivered quality.
+
+## Ordinary clear-card items
 
 Ordinary settlement cards use `etc/itemdropinfo_clearreward.etc` in the current
 server. `[drop prob]` holds named profiles of level-min/max/probability triples.
@@ -62,6 +127,19 @@ and clear-reward equipment pool then select an item; an empty pool yields no
 item and has no lower-rarity fallback. Do not equate a rarity interval with
 per-card success. `[item drop rarity control]` is parsed but not used by this
 generator; `[drop kind prob]` and blank-item tags are not read by this path.
+
+`[item drop ref table]` triples are dungeon basis level, downward grade span,
+and upward grade span. Candidates use equipment `[grade]` in the half-open
+range `[basisLevel-down, basisLevel+up)`, restricted to 1..200; do not substitute
+`[minimum level]`. The pool requires positive `[creation rate]` and grade,
+with rarity 0..5; creation rate is the relative item weight. Avatar and ordinary
+equipment pools are separate. Changing equipment creation rate also affects
+the shared generic equipment pool, so it is not a clear-card-only control.
+`[gold card cost table]` pairs are dungeon basis level and paid-card gold cost;
+lookup uses the exact level, else the closest lower entry (or the lowest entry
+if none is lower). `[drop prob count]` and `[chronicle set reward rate]` are
+not read by this ordinary-card parser/generator. Preserve unsupported fields
+instead of assigning them invented runtime effects.
 
 ## Quest drops
 

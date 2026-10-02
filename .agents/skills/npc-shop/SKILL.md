@@ -2,7 +2,8 @@
 name: npc-shop
 description: >-
   Edit A21 NPC shops in itemshop/*.shp: tabs, item lists, job categories,
-  listing, new shops. Use for NPC shop, itemshop, .shp, NPC tabs, [item list],
+  listing, new shops, and NPC placement in towns or Seria's room. Use for
+  adding town NPCs, NPC shop, itemshop, .shp, NPC tabs, [item list],
   or [use category]. NPC price lives on the item file. CERA cash-shop requests
   belong to cera-shop. Read repo AGENTS.md first.
 ---
@@ -24,6 +25,27 @@ Example: 卡妮娜 NPC ID `3`, `npc/Kanna.npc` shop ID `84`, file `itemshop/84_K
 Other entries may be `[product item]` or `[secret shop]`. A static secret-shop close does not mean it appears in-game.
 
 New shop: write `itemshop/itemshop.lst` and the NPC `[item shop]`. Existing shop: keep those ID links.
+
+## NPC placement versus shop registration
+
+`itemshop/itemshop.lst` registers shops; it does not place NPCs. In this A21
+map format, a `.map` `[NPC]` list uses five tokens per actor:
+`NPC_ID`, backtick direction (`[left]`/`[right]`), X, Y, and an integer flags
+field, closed by `[/NPC]`. Preserve the target map's flags convention; do not
+invent its meaning. Resolve NPC IDs through `npc/npc.lst`.
+
+For an existing NPC, append a placement to the active room/town map rather
+than allocating a new NPC or shop ID. A new NPC definition needs a free ID,
+registry entry, `.npc`, and map placement; shop behavior additionally needs
+the `.npc` role/shop link and registered `.shp` from the forward closure.
+
+Trace a town's registered `.twn` area map references to actual archive paths;
+town references may be relative to `map/` rather than archive root. Seria-room
+archives can retain both `map/common/` and `map/town/common/` gate maps, plus
+normal/PVP and event variants. Confirm which the target client loads before
+choosing a file; basename matches or missing `map.lst` rows do not prove a town
+map is unused. Copy the existing `[NPC]` shape and preserve existing actors.
+Verify position, walkability, appearance, interaction, and shop behavior in-game.
 
 ## Outer skeleton
 

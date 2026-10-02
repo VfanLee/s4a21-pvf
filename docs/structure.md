@@ -19,6 +19,10 @@
 
 先确认目标是解包目录、只查询的已打包 `Script.pvf`，还是已经授权重写的已打包 PVF。重写打包 PVF 时：必须用 PVF 解析/写入工具，先写临时文件并回读验证，最后才原子替换已授权目标。未解包时不要臆造路径。
 
+## 副本难度与入口
+
+全局与独立难度表、原版对比、旧副本入口的检查方法见 [副本难度文档](skills/dungeon-difficulty.md)。
+
 ## `.lst`：ID 从哪来
 
 `.lst` 的一行是 `数字 ID → 该目录下的相对路径`。**这个映射才是 ID。**
@@ -108,9 +112,9 @@ Script.pvf 里的图标路径**不证明**客户端 NPK 里真有这张图。
 
 | 要改什么 | 中文 | 模型 |
 | --- | --- | --- |
-| NPC 商店页签、上架、分类、`.shp` | [skills/npc-shop.md](skills/npc-shop.md) | `.agents/skills/npc-shop/SKILL.md` |
+| 城镇/赛丽亚房间 NPC 放置、商店页签、上架、分类、`.shp` | [skills/npc-shop.md](skills/npc-shop.md) | `.agents/skills/npc-shop/SKILL.md` |
 | 点券商城上架、售价、页面、契约、商品迁移 | [skills/cera-shop.md](skills/cera-shop.md) | `.agents/skills/cera-shop/SKILL.md` |
-| 道具定义、NPC 道具价格、期限、礼包奖励、`.stk` / `.equ` | [skills/items.md](skills/items.md) | `.agents/skills/items/SKILL.md` |
+| 道具定义、NPC 道具价格、期限、礼包与任务奖励、`.stk` / `.equ` | [skills/items.md](skills/items.md) | `.agents/skills/items/SKILL.md` |
 | 金币掉落概率、数量、浮动、通关倍率 | [skills/gold-drop.md](skills/gold-drop.md) | `.agents/skills/gold-drop/SKILL.md` |
 
 NPC 商店与道具一起改，先改定义再改 `.shp`；点券商城与奖励一起改，同时加载商城和道具技能，
@@ -153,5 +157,9 @@ NPC 商店与道具一起改，先改定义再改 `.shp`；点券商城与奖励
 先闭合 `n_quest/quest.lst → 已登记的任务 .qst → worldmap/*.wdm 的 [hell quest]`。比较登记时统一路径分隔符；包内有任务文件但登记表没有对应 ID，不能据此认定任务可接取。
 
 任务需要一起核对等级、类型、目标数据、前置任务、奖励类型和奖励数据。对话引导且奖励为物品，与授予 `[hell challenge]` 的解锁任务用途不同。撤回统一解锁时，应同步恢复区域条件和被移除的任务登记；只补回必要的缺失记录，保留现版独有的其他登记，不要用原版整份覆盖登记表。原版引用了未登记旧任务时，应单独说明，不能擅自补全成另一套流程。
+
+前置关系以实际 `[pre required quest]` 引用为准。空块不能证明此前的对话任务是必做前置，也不能从章节名称、文件名或显示顺序推断任务链和最低等级。
+
+任务中的接取/完成 NPC、副本、怪物、材料和奖励编号，要分别通过对应登记表解析。`[int data]` 按任务 `[type]` 和同类任务结构解释；修改后的任务目标可能与条件说明文字不一致，不能只根据文案判断完成方式。
 
 `etc/hellparty.etc` 的 `[difficulty]` 属于深渊遭遇配置，和开启任务分开处理。PVF 恢复不会自动清空角色已保存的任务完成记录，须在游戏内核验。

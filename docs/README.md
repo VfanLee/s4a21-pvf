@@ -10,11 +10,12 @@
 | --- | --- |
 | PVF 结构与 ID 关系 | [structure.md](structure.md) |
 | 硬规则与通用修改流程 | [skills/README.md](skills/README.md) |
-| NPC 商店（`.shp`） | [skills/npc-shop.md](skills/npc-shop.md) |
+| 城镇/赛丽亚房间 NPC 放置与商店（`.shp`） | [skills/npc-shop.md](skills/npc-shop.md) |
 | 点券商城的上架、售价、页面、契约、商品迁移 | [skills/cera-shop.md](skills/cera-shop.md) |
-| 道具定义、NPC 道具价格、期限、礼包奖励（`.stk` / `.equ`） | [skills/items.md](skills/items.md) |
+| 道具定义、NPC 道具价格、期限、礼包与任务奖励（`.stk` / `.equ`） | [skills/items.md](skills/items.md) |
 | 金币掉落概率、数量、浮动、通关倍率 | [skills/gold-drop.md](skills/gold-drop.md) |
-| 怪物物品掉落池、任务材料掉落概率与数量 | [skills/item-drop.md](skills/item-drop.md) |
+| 全局材料掉落、怪物物品掉落池、任务材料掉落概率与数量 | [skills/item-drop.md](skills/item-drop.md) |
+| 副本难度表、原版对比与旧副本入口 | [skills/dungeon-difficulty.md](skills/dungeon-difficulty.md) |
 
 ## 和 skills 的对照
 
@@ -27,6 +28,7 @@
 | [skills/items.md](skills/items.md) | [`.agents/skills/items/SKILL.md`](../.agents/skills/items/SKILL.md) |
 | [skills/gold-drop.md](skills/gold-drop.md) | [`.agents/skills/gold-drop/SKILL.md`](../.agents/skills/gold-drop/SKILL.md) |
 | [skills/item-drop.md](skills/item-drop.md) | [`.agents/skills/item-drop/SKILL.md`](../.agents/skills/item-drop/SKILL.md) |
+| [skills/dungeon-difficulty.md](skills/dungeon-difficulty.md) | [`.agents/skills/dungeon-difficulty/SKILL.md`](../.agents/skills/dungeon-difficulty/SKILL.md) |
 
 ## 同步约定
 

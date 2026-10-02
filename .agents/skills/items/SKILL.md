@@ -2,7 +2,7 @@
 name: items
 description: >-
   Inspect or edit A21 item definitions (.stk/.equ): materials, potions, NPC
-  item prices, expiry, binding, package rewards, vault tickets, and new IDs.
+  item prices, expiry, binding, package and quest rewards, vault tickets, and new IDs.
   Use for item properties or opening/use effects. For NPC listings also read
   npc-shop; for CERA listings, prices, pages, or contracts read cera-shop.
 ---
@@ -57,6 +57,25 @@ PVF reference checks do not inspect existing inventory/mail/database instances.
 
 If the tag already exists, change the value; do not add a second copy.
 
+## A21 binding and trade type
+
+`[attach type]` uses the following values in this project's A21 PVF. Do not
+infer the meaning from the English word `trade`.
+
+| Value | Meaning |
+| --- | --- |
+| `[free]` | 不限制 |
+| `[sealing]` | 封装 |
+| `[trade]` | 不可交易 |
+| `[account]` | 帐号绑定 |
+| `[trade delete]` | 无法交易、删除 |
+| `[sealing trade]` | 封装且不可交易 |
+
+To allow unrestricted trading, change the existing `[attach type]` value to
+`[free]`; `[trade]` means untradeable. Keep backticks and do not duplicate the
+tag. Check other applicable trade restrictions separately; this field alone
+does not establish every runtime restriction.
+
 ## A21 price (plain stackable)
 
 - **Buy**: `[price]` first; else positive `[value]`. Neither → NPC shop buy price `0`.
@@ -66,6 +85,13 @@ If the tag already exists, change the value; do not add a second copy.
 Examples: `3047` 林纳斯火炉券 `price=10000` `value=10` → buy 10000, sell 2. `1006` 加速药剂 `2000` / `200` → buy 2000, sell 40. `3037` 无色小晶块 `price=100` only → buy 100, sell 20.
 
 For the current server's NPC exchange path, `[need material]` is one effective **material ID, count** pair: it reads only the first two values. Do not add further pairs expecting them to be charged. Do not confuse the pair with the shop item's own ID. A21 samples close `[/need material]`; if a file has no closer, follow neighbors — do not mix styles.
+
+To convert an NPC material exchange to ordinary gold sales, remove the complete
+`[need material]` block, including its closer, then update or add one `[price]`.
+Placement before `[icon]` is a formatting convention, not a price requirement.
+Keep `[consume item]`, use effects, `[value]`, and shop item lists unchanged.
+Item-definition pricing applies wherever that item is sold; if `[value]` is absent,
+the new `[price]` also changes the ordinary stackable sell-price fallback.
 
 Equipment recycle uses the server equipment rate, **not** `value ÷ 5`, with a minimum. Equipment buy still prefers `[price]`, else `[value]`; with valid `[need material]` use `price + add price`.
 
@@ -132,6 +158,21 @@ proves a client pickup request, not whether the player pressed a pickup key.
 
 Effect layouts differ per potion: copy a same-kind item; change only values you understand. Flavor like “reduces cooldown” in `[explain]` does not change mechanics (e.g. `2600021`).
 
+For maintained potion effects, the current server requires a positive
+`[stat change duration]` when `[effect maintenance]` exists and uses that duration
+for its effect-state deadline. `[cool time]` is the item's reuse cooldown.
+For this A21 cooldown-reduction potion, the maintained-effect shape
+`[effect maintenance] 1 1 1 0` with ``[stat change duration] 1800000 `myself` ``
+is usable without replacing the original special effect. Recheck real skill
+cooldowns and map transitions when changing duration; an icon alone is insufficient.
+Do not generalize this result to other special consumables without checking them.
+
+`[cooltime group]` is a shared item-reuse cooldown group ID, not a duration or
+an effect group. Matching groups associate cooldowns but do not make differing
+`[cool time]` values equal. The current server checks same-item and same-positive-group
+active cooldown states when its `[cooltime maintenance]` path is enabled; a group
+tag alone does not enable that server path. Keep one copy of each cooldown tag.
+
 `2600561` 顶级力量灵药 is `[waste]` with no `[price]`/`[value]`; listing it sells at 0. To charge, add `[price]` on the `.stk`; for recycle add `[value]` (recycle = value/5). For 7-day expiry add `[usable period] 7`.
 
 ## Other existing types
@@ -145,6 +186,22 @@ Effect layouts differ per potion: copy a same-kind item; change only values you 
 | Title / avatar / creature | `[title name]` `[coat avatar]` `[creature]` | not ordinary weapons |
 
 Copy a same-kind `.equ`/`.stk`. Do not paste potion field blocks. Equipment may also have `[price]`/`[value]`/expiry with the same formats, but wear / durability / recycle rules differ.
+
+## Quest completion item rewards
+
+Resolve the exact quest name through `n_quest/quest.lst` and its registered
+`.qst` `[name]`; a name in dialogue is not a quest-name match. With
+`[reward type]` `[item]`, ordinary `[reward int data]` entries are fixed item-ID/count pairs, and
+`[reward selection int data]` is a separate selectable reward list. Resolve
+each reward ID through stackable or equipment registries before editing.
+Keep pair alignment and closing tags; quantity edits do not require changing
+the item's definition or the quest's objective `[int data]`. Verify on an
+eligible character completing the quest; do not claim prior grants refresh.
+
+The current server also parses job-filtered entries as item ID, `[job]`, job ID,
+grow type, count; do not flatten them into pairs. Fixed item rewards can use
+ID `0` as a gold marker, while selectable rewards cannot. Preserve existing
+special entries and confirm the consumer before changing their structure.
 
 ## New items
 
@@ -188,6 +245,24 @@ reward/use definition; load both when the task changes the catalog and its rewar
 Level-up tickets (e.g. `10006124`): server grants +1 level per use; that ticket's stack limit is 10.
 
 ### Personal vault max ticket
+
+For a personal-vault upgrade route, resolve `cash/safe_upgradekit.stk` and
+numbered `safe_upgradekitN.stk` through `stackable.lst`, then close their
+`[explain]` capacities against the matching `cerashop.etc` products and prices.
+The unnumbered filename is tier 1; subsequent numbered tiers target successive
+capacities. In this project's server, a recognized higher-tier ticket targets
+its capacity directly, and a higher-tier CERA purchase charges that product's
+price rather than summing skipped tiers. State this runtime boundary; PVF text
+alone does not prove live-server skip behavior. Keep account-vault tools and
+`etc/accountcargo.etc` separate from this personal-vault route.
+
+Distinguish inventory ticket use from CERA purchase retries. A ticket whose
+target capacity is already reached is not consumed. In the current server,
+buying an already-reached tier instead advances to the next tier and charges
+its catalog price; if that next-tier product is missing, the implementation
+falls back to the clicked product's price. At maximum capacity, purchases are
+rejected without payment. Label route totals as sequential-purchase totals,
+not as a mandatory cost for a direct-target upgrade.
 
 Character vault in Seria's room, not account vault. A21 starts at 8 slots, max 200. Existing ID `10098633` (`cash/safe_upgradekit12.stk`) already expands to 200.
 

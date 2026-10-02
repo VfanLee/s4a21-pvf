@@ -1,5 +1,20 @@
 # NPC 商店
 
+## NPC 位置与商店登记
+
+`itemshop/itemshop.lst` 只登记商店，不负责让 NPC 出现在地图中。
+A21 地图 `.map` 的 `[NPC]` 每个条目包含五项：NPC ID、反引号方向
+（`[left]` / `[right]`）、X、Y、整数标志值，段落以 `[/NPC]` 闭合。
+NPC ID 经 `npc/npc.lst` 核对，末尾标志按目标地图已有条目保留，不猜测含义。
+
+放置已有 NPC 时，在实际加载的房间或城镇地图中追加位置即可，不必新建 NPC 或商店 ID。
+新增 NPC 则需要空闲 ID、NPC 登记、`.npc` 定义和地图位置；要开商店还需闭合
+NPC 的商店角色、商店登记和 `.shp`。
+城镇从已登记 `.twn` 的区域地图引用查找，引用可能相对 `map/`，不一定相对档案根目录。
+赛丽亚房间可能保留 `map/common/`、`map/town/common/` 两套地图及普通、PVP、活动版本，
+必须确认目标客户端实际加载哪一份，不能只靠文件名选文件；未出现在 `map.lst` 也不证明城镇地图无效。
+保留已有 NPC，实机核对位置、可行走范围、外观、交互及商店功能。
+
 对应 [`.agents/skills/npc-shop/SKILL.md`](../../.agents/skills/npc-shop/SKILL.md)。价格、效果见 [items.md](items.md)。
 点券商城的商品、售价与页面使用独立的 [cera-shop.md](cera-shop.md)。
 

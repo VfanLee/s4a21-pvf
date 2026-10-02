@@ -17,15 +17,16 @@ Reply to the user in Simplified Chinese.
 
 | Task | Read |
 | --- | --- |
-| NPC shop tabs, listings, categories, `.shp` | [npc-shop/SKILL.md](npc-shop/SKILL.md) |
+| NPC placement in towns/Seria room; shop tabs, listings, categories, `.shp` | [npc-shop/SKILL.md](npc-shop/SKILL.md) |
 | CERA cash-shop listings, prices, pages, contracts, catalog migration | [cera-shop/SKILL.md](cera-shop/SKILL.md) |
-| Item definitions, NPC item prices, expiry, package rewards, tickets, `.stk`/`.equ` | [items/SKILL.md](items/SKILL.md) |
+| Item definitions, NPC item prices, expiry, package/quest rewards, tickets, `.stk`/`.equ` | [items/SKILL.md](items/SKILL.md) |
 | Gold drop probability, amount, variance, clear-card multipliers | [gold-drop/SKILL.md](gold-drop/SKILL.md) |
-| Monster item pools, quest-material drop probability/count | [item-drop/SKILL.md](item-drop/SKILL.md) |
+| Global material drops, monster item pools, quest-material drop probability/count | [item-drop/SKILL.md](item-drop/SKILL.md) |
+| Dungeon difficulty tables, `.dgn` difficulty fields, comparisons, legacy entrances | [dungeon-difficulty/SKILL.md](dungeon-difficulty/SKILL.md) |
 
 For NPC shop + item edits, update the `.stk`/`.equ` first, then the `.shp` listing. For CERA shop + item edits, load cera-shop and items; close item definitions/rewards before listing in `cerashop.etc`. Listing or pricing alone does not require unrelated domain skills.
 
-For skills, dungeons, monsters, NUT, or other drops without a domain skill, resolve the matching `.lst` where one exists and read the source; follow the hard rules below. Global `etc/` tables do not have a single registry.
+For skills, dungeon tasks beyond difficulty/entrances, monsters, NUT, or other drops without a domain skill, resolve the matching `.lst` where one exists and read the source; follow the hard rules below. Global `etc/` tables do not have a single registry.
 
 ## Hard rules
 
@@ -76,9 +77,15 @@ read-only close → (after permission) minimal edit → read-back → pack match
 
 Lead with: can it be done, which files, main risks, next step. Attach IDs, paths, and raw tags when needed.
 
+## Dungeon difficulty and entrances
+
+Follow [dungeon-difficulty/SKILL.md](dungeon-difficulty/SKILL.md) for global and independent difficulty tables, archive comparisons, and legacy dungeon entrances.
+
 ## Abyss unlock investigations (A21)
 
 - Close the chain `n_quest/quest.lst → registered .qst → worldmap/*.wdm [hell quest]`. An archived `.qst` with no registry row does not prove its task is available; normalize registry path separators before comparing.
 - Compare `[level]`, `[type]`, `[int data]`, `[pre required quest]`, `[reward type]` and `[reward int data]` together. A dialogue introduction with item rewards is not an unlock task granting `[hell challenge]`.
+- Establish prerequisites from the actual `[pre required quest]` references. An empty block does not make an earlier dialogue quest mandatory; do not infer a chain or minimum level from episode names, filenames, or display order.
+- Resolve task participants and targets in their own registries: `[npc index]` / `[complete npc index]` through `npc/npc.lst`, dungeon and monster targets through their respective registries, and required/reward items through item registries. Interpret `[int data]` according to the task `[type]` and same-purpose neighbors; a condition message can disagree with a modified objective.
 - Restore region gates and removed quest registry rows together when reversing a shared unlock task. Append only the required missing rows; preserve unrelated target-only registrations rather than replacing the whole registry. Inspect baseline dangling quest references separately; do not silently activate unregistered legacy tasks.
 - `etc/hellparty.etc [difficulty]` controls a separate deep-abyss encounter configuration; distinguish its restoration from unlock-flow restoration. Verify character completion state in-game; restoring PVF does not itself clear saved quest progress.

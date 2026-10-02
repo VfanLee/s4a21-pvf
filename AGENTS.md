@@ -84,10 +84,11 @@ For edit workflow and hard rules, read [`.agents/skills/SKILL.md`](.agents/skill
 
 | Task | Domain skill |
 | --- | --- |
-| NPC `.shp` listings, tabs, categories | [npc-shop](.agents/skills/npc-shop/SKILL.md) |
+| NPC placement in towns/Seria room; `.shp` listings, tabs, categories | [npc-shop](.agents/skills/npc-shop/SKILL.md) |
 | CERA cash-shop products, prices, pages, contracts, catalog migration | [cera-shop](.agents/skills/cera-shop/SKILL.md) |
-| Item definitions, package rewards, expiry, bind, use effects | [items](.agents/skills/items/SKILL.md) |
+| Item definitions, package/quest rewards, expiry, bind, use effects | [items](.agents/skills/items/SKILL.md) |
 | Gold drop probability, amount, variance, clear-card multipliers | [gold-drop](.agents/skills/gold-drop/SKILL.md) |
-| Monster item pools, quest-material drop probability/count | [item-drop](.agents/skills/item-drop/SKILL.md) |
+| Global material drops, monster item pools, quest-material drop probability/count | [item-drop](.agents/skills/item-drop/SKILL.md) |
+| Dungeon difficulty tables, `.dgn` difficulty fields, comparisons, legacy entrances | [dungeon-difficulty](.agents/skills/dungeon-difficulty/SKILL.md) |
 
 For combined tasks, load each involved domain; cash-shop listing alone does not require the NPC-shop skill.

@@ -46,6 +46,18 @@ In A21, `[regular package]` is the daily-package page and `[package]` is the mai
 package page; character-premium entries use the limited/service UI.
 Check placement and display order in-game after editing.
 
+For this A21 client's avatar page, `old product` follows catalog record order and
+`new product` shows its reverse; changing product IDs alone does not reverse the
+visible sequence. Write the desired `new product` sequence backwards, including
+the eight slots within each set. Keep product-to-item mappings intact for row-only
+repairs. Recheck the actual selected mode before claiming first-page placement.
+
+Validate sorting by extracting the per-job records in physical order and comparing
+their reversed item-ID sequence with the complete intended display sequence.
+When IDs correlate with row order, a screenshot alone cannot identify the sort key;
+change only one ordering variable and compare both `new product` and `old product`.
+Archive read-back proves the configured sequence, not a successful in-game check.
+
 Moving a product: remove its source row and add one destination row using the
 destination layout. Read both sections back. Scan product IDs across all catalog
 sections: the server stores them in one dictionary and later parsed rows overwrite
@@ -65,6 +77,22 @@ selectable abilities, and set-effect indexes before treating definitions as
 duplicates. GM items and unidentified placeholders do not establish a sellable set.
 Rare clones have `[item category]` `clear avatar`; check the grade and eight slots
 to avoid listing advanced clones as rare avatars.
+
+For cross-slot color grouping, compare the named palette and the actual appearance;
+the second `[variation]` value is not a universal color index across equipment slots.
+The same named palette can use different numeric indexes in different slots.
+Same-name clones can differ in minimum level or offers; compare these fields before
+deduplicating them. Keep a complete eight-slot clone group ahead of any alternate group.
+
+For release-date ordering, use each set's first Chinese-server release, preferably
+from official sources. Equipment IDs and file timestamps are not release dates.
+Record source precision; keep normal sets without a confirmed Chinese release
+after dated sets instead of inventing dates.
+
+For integer-only changes to a Type 1 catalog section, splice its type-0 numeric
+tokens between the original section markers. Preserve all other raw tokens and
+string-reference offsets; verify both the untouched chunks and neighboring payloads
+in the rewritten chunk after reopening the archive.
 
 For the current server, voucher payment (`paymentMode=1`) with grade 3 and offer
 tier 3 consumes one rare-avatar voucher (`2681594`) and sets the CERA charge to 0.
