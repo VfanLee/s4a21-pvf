@@ -1,0 +1,64 @@
+[name]
+	`臭水沟公主·帕丽丝` 
+
+[explain]
+	`使用后， 可以召唤出臭水沟公主·帕丽丝协助召唤者攻击敌人， 臭水沟公主·帕丽丝存在15分钟。` 
+
+[grade]
+	1 
+
+[rarity]
+	2 
+
+[usable job]
+	`[all]` 
+
+[/usable job]
+	
+
+[attach type]
+	`[trade]` 
+
+[minimum level]
+	1 
+
+[weight]
+	1 
+
+[cool time]
+	900000 
+
+[price]
+	10000 
+
+[icon]
+	`Item/stackable/consumption.img` 414 
+
+[field image]
+	`Item/FieldImage.img` 32 
+
+[stackable type]
+	`[waste]` 0 
+
+[move wav]
+	`FOOD_TOUCH` 
+
+[stack limit]
+	1000 
+
+[expert type]
+	`[doll_controller]` 
+
+[sub type]
+	2 
+
+[cooltime group]
+	100 
+
+[summon apc]
+	5404 55 55 900000 1 
+
+[impossible contents]
+	`gift` 
+
+[/impossible contents]

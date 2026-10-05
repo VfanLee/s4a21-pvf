@@ -1,0 +1,44 @@
+[name]
+	`撒勒的印章` 
+
+[explain]
+	`决斗场三代冠军撒勒持有的印章， 是用设计图合成物品的高级材料。 (该道具可以通过在地下城击杀怪物获得)` 
+
+[grade]
+	8 
+
+[rarity]
+	1 
+
+[usable job]
+	`[all]` 
+
+[/usable job]
+	
+
+[attach type]
+	`[free]` 
+
+[minimum level]
+	1 
+
+[weight]
+	1 
+
+[price]
+	10000 
+
+[icon]
+	`Item/IconMaterial.img` 36 
+
+[field image]
+	`Item/FieldImage.img` 30 
+
+[stackable type]
+	`[material]` 8 
+
+[item group name]
+	`cloth stuff` 
+
+[move wav]
+	`SKIN_TOUCH`

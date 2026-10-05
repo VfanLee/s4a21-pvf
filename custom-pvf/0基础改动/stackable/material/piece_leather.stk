@@ -1,0 +1,44 @@
+[name]
+	`破旧的皮革` 
+
+[explain]
+	`制作皮甲防具的基础材料。 在NPC罗杰处可以用该道具加工成更高级的皮革。 (该道具可以通过在地下城击杀怪物获得)` 
+
+[grade]
+	1 
+
+[rarity]
+	1 
+
+[usable job]
+	`[all]` 
+
+[/usable job]
+	
+
+[attach type]
+	`[free]` 
+
+[minimum level]
+	1 
+
+[weight]
+	1 
+
+[price]
+	10000 
+
+[icon]
+	`Item/IconMaterial.img` 7 
+
+[field image]
+	`Item/FieldImage.img` 34 
+
+[stackable type]
+	`[material]` 1 
+
+[item group name]
+	`animal stuff` 
+
+[move wav]
+	`SKIN_TOUCH`

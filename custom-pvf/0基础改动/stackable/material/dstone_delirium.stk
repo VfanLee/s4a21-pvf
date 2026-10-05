@@ -1,0 +1,45 @@
+#PVF_File
+
+[name]
+	`光辉魔石`
+
+[explain]
+	`制作2期勇者和精 · 2期勇者装备设计图的必备材料。 (该道具可以通过在地下城击杀怪物获得)`
+
+[grade]
+	1
+
+[rarity]
+	2
+
+[usable job]
+	`[all]`
+[/usable job]
+
+[attach type]
+	`[free]`
+
+[minimum level]
+	1
+
+[weight]
+	1
+
+[icon]
+	`Item/stackable/material.img`	219
+
+[field image]
+	`Item/FieldImage.img`	24
+
+[stackable type]
+	`[material]`	1
+
+[item group name]
+	`stuff etc`
+
+[move wav]
+	`STONE_TOUCH`
+
+[need material]
+	3241	10
+[/need material]

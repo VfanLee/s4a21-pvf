@@ -1,0 +1,44 @@
+[name]
+	`最下级硬化剂` 
+
+[explain]
+	`制作武器的基础材料。 在罗杰处可以加工成更高级的硬化剂。 (该道具可以通过在地下城击杀怪物获得)` 
+
+[grade]
+	1 
+
+[rarity]
+	1 
+
+[usable job]
+	`[all]` 
+
+[/usable job]
+	
+
+[attach type]
+	`[free]` 
+
+[minimum level]
+	1 
+
+[weight]
+	1 
+
+[price]
+	10000 
+
+[icon]
+	`Item/stackable/material.img` 69 
+
+[field image]
+	`Item/FieldImage.img` 30 
+
+[stackable type]
+	`[material]` 1 
+
+[item group name]
+	`stuff etc` 
+
+[move wav]
+	`BONE_TOUCH`

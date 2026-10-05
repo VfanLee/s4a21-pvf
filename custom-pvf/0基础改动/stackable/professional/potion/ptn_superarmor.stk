@@ -1,0 +1,56 @@
+[name]
+	`霸体护甲药水` 
+
+[grade]
+	1 
+
+[rarity]
+	2 
+
+[usable job]
+	`[all]` 
+
+[/usable job]
+	
+
+[attach type]
+	`[free]` 
+
+[minimum level]
+	1 
+
+[weight]
+	1 
+
+[cool time]
+	60000 
+
+[price]
+	10000 
+
+[icon]
+	`Item/stackable/consumption.img` 401 
+
+[field image]
+	`Item/FieldImage.img` 32 
+
+[stackable type]
+	`[waste]` 0 
+
+[item group name]
+	`potion` 
+
+[move wav]
+	`POTION_TOUCH` 
+
+[cooltime group]
+	15 
+
+[stack limit]
+	1000 
+
+[expert type]
+	`[alchemist]` 
+
+[buff]
+	`superarmor` 30000 `myself` 5

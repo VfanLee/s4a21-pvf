@@ -1,0 +1,21 @@
+#PVF_File
+
+[NPC]
+	20215
+
+[type]
+	`[etc shop]`
+
+[sell info]
+	[use category]
+		`basic job`
+	[tab]
+		`商店`	
+		[item list]
+			1183	1286	1284	8238
+		[/item list]
+	[/tab]
+[/sell info]
+
+[message]
+	`在异次元空间， 我们谁也预料不到会发生什幺事， 希望这些东西对你有帮助。`

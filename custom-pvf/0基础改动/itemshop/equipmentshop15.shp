@@ -1,0 +1,324 @@
+#PVF_File
+
+[NPC]
+	45
+
+[type]
+	`[etc shop]`
+
+[sell info]
+	[use category]
+		`basic job`
+	[tab]
+		`其他`	
+		[item list]
+			3331	3330	10090756	10012565	10012566	10088706	10088707
+		[/item list]
+	[/tab]
+	[tab]
+		`武器`	
+		[category entry]
+			[id]
+				0
+			[item list]
+				28282	101000004	101010021	101030018	101020023	101040019
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				11
+			[item list]
+				101000004	101010021	101030018	101020023
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				7
+			[item list]
+				29716	102000028	102010090	102020024	102030023	102040024
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				1
+			[item list]
+				29716	102000028	102010090	102020024	102030023	102040024
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				5
+			[item list]
+				104010018	104020019	104030021	104000022	104040021
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				2
+			[item list]
+				104010018	104020019	104030021	104000022	104040021
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				8
+			[item list]
+				33385	106000021	106020019	106010021	106030022
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				3
+			[item list]
+				33385	106000021	106020019	106010021	106030022	106040020
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				4
+			[item list]
+				35076	108000021	108010019	108020019	108030020	108040019
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				6
+			[item list]
+				109040079	109000019	109010018	109020018	109040080
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				9
+			[item list]
+				28282	101000004	101010021	101030018	101020023	101040019
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				10
+			[item list]
+				33385	106000021	106020019	106010021	106030022	106040020
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				12
+			[item list]
+				101000004	101010021
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				13
+			[item list]
+				114000092	114010078
+			[/item list]
+		[/category entry]
+	[/tab]
+	[tab]
+		`防具`	
+		[category entry]
+			[id]
+				0
+			[item list]
+				10191	12188	14172	100050019	100100005	100250005	10964	12958	14954	100070004	100120004	100270004	11345	15335	17329	100080004	100130004	100280004	11701	13700	19701	100090004	100140004	100290004
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				11
+			[item list]
+				10560	12557	16546	100060006	100110004	100260004	10964	12958	14954	100070004	100120004	100270004	11345	15335	17329	100080004	100130004	100280004	11701	13700	19701	100090004	100140004	100290004
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				7
+			[item list]
+				10191	12188	14172	100050019	100100005	100250005	10964	12958	14954	100070004	100120004	100270004
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				1
+			[item list]
+				10191	12188	14172	100050019	100100005	100250005	10964	12958	14954	100070004	100120004	100270004
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				5
+			[item list]
+				10191	12188	14172	100050019	100100005	100250005	10560	12557	16546	100060006	100110004	100260004	11345	15335	17329	100080004	100130004	100280004
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				2
+			[item list]
+				10191	12188	14172	100050019	100100005	100250005	10560	12557	16546	100060006	100110004	100260004	11345	15335	17329	100080004	100130004	100280004
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				8
+			[item list]
+				10191	12188	14172	100050019	100100005	100250005	10560	12557	16546	100060006	100110004	100260004
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				3
+			[item list]
+				10191	12188	14172	100050019	100100005	100250005	10560	12557	16546	100060006	100110004	100260004
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				4
+			[item list]
+				10191	12188	14172	100050019	100100005	100250005	10964	12958	14954	100070004	100120004	100270004	11345	15335	17329	100080004	100130004	100280004	11701	13700	19701	100090004	100140004	100290004
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				6
+			[item list]
+				10191	12188	14172	100050019	100100005	100250005	10560	12557	16546	100060006	100110004	100260004	10964	12958	14954	100070004	100120004	100270004
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				9
+			[item list]
+				10191	12188	14172	100050019	100100005	100250005	10560	12557	16546	100060006	100110004	100260004	10964	12958	14954	100070004	100120004	100270004	11345	15335	17329	100080004	100130004	100280004
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				10
+			[item list]
+				11701	13700	19701	100090004	100140004	100290004
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				12
+			[item list]
+				11345	15335	17329	100080004	100130004	100280004	11701	13700	19701	100090004	100140004	100290004
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				13
+			[item list]
+				10964	12958	14954	100070004	100120004	100270004	11345	15335	17329	100080004	100130004	100280004
+			[/item list]
+		[/category entry]
+	[/tab]
+	[tab]
+		`首饰`	
+		[category entry]
+			[id]
+				0
+			[item list]
+				100300002	100310002
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				11
+			[item list]
+				100300002	100310002
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				7
+			[item list]
+				100300002	100310002
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				1
+			[item list]
+				100300002	100310002
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				5
+			[item list]
+				100300002	100310002
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				2
+			[item list]
+				100300002	100310002
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				8
+			[item list]
+				100300002	100310002
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				3
+			[item list]
+				100300002	100310002
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				4
+			[item list]
+				100300002	100310002
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				6
+			[item list]
+				100300002	100310002
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				9
+			[item list]
+				100300002	100310002
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				10
+			[item list]
+				100300002	100310002
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				12
+			[item list]
+				100300002	100310002
+			[/item list]
+		[/category entry]
+		[category entry]
+			[id]
+				13
+			[item list]
+				100300002	100310002
+			[/item list]
+		[/category entry]
+	[/tab]
+[/sell info]
+
+[message]
+	`只有优质的武器才能对抗邪恶！`

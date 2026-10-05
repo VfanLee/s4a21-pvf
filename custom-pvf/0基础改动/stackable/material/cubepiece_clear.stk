@@ -1,0 +1,41 @@
+[name]
+	`无色小晶块` 
+
+[explain]
+	`完成任务所需的材料， 同时可以用于高级技能、 晶之契约及兑换矛盾的结晶体。 (可以通过装备分解获得该道具； 出售给商店后无法再次购买)` 
+
+[grade]
+	5 
+
+[rarity]
+	1 
+
+[usable job]
+	`[all]` 
+
+[/usable job]
+	
+
+[attach type]
+	`[free]` 
+
+[minimum level]
+	1 
+
+[price]
+	1000 
+
+[icon]
+	`Item/IconMaterial.img` 13 
+
+[field image]
+	`Item/FieldImage.img` 30 
+
+[stackable type]
+	`[material]` 2 
+
+[item group name]
+	`cube stuff` 
+
+[move wav]
+	`CUBE_TOUCH`

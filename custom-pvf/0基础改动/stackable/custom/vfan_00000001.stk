@@ -1,0 +1,51 @@
+#PVF_File
+
+[name]
+	`10000欢乐代币券礼盒`
+
+[explain]
+	`开启后， 可以获得10000欢乐代币券。`
+
+[flavor text]
+	`<赛丽亚的爱>`
+
+[grade]
+	1
+
+[rarity]
+	2
+
+[usable job]
+	`[all]`
+[/usable job]
+
+[attach type]
+	`[account]`
+
+[minimum level]
+	1
+
+[cool time]
+	1000
+
+[price]
+	1000000
+
+[icon]
+	`Item/stackable/cash_cn.img`	866
+
+[stackable type]
+	`[booster]`	0
+
+[move wav]
+	`BONE_TOUCH`
+
+[stack limit]
+	1000
+
+[booster info]
+	[etc]
+		1
+		2681917	100000	10000
+	[/etc]
+[/booster info]

@@ -1,0 +1,41 @@
+#PVF_File
+
+[name]
+	`遗迹的残片`
+
+[explain]
+	`可以在艾丽西亚·亚丁处兑换圣物碎片的材料。`
+
+[grade]
+	1
+
+[rarity]
+	2
+
+[usable job]
+	`[all]`
+[/usable job]
+
+[attach type]
+	`[trade]`
+
+[minimum level]
+	1
+
+[weight]
+	1
+
+[price]
+	100000
+
+[icon]
+	`Item/stackable/material.img`	599
+
+[field image]
+	`Item/FieldImage.img`	24
+
+[stackable type]
+	`[material]`	0
+
+[move wav]
+	`JEWEL_TOUCH`

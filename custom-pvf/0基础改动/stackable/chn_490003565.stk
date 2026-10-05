@@ -1,0 +1,70 @@
+[name]
+	`成就任务完成券` 
+
+[explain]
+	`使用后， 可以自动完成当前Lv为止的所有成就任务。 自动完成的任务只能获得称号奖励， 任务经验值、 相关道具及金币奖励无法获得。 (以下成就任务除外 : 向阿尔伯特学技能、 死神的气息、 穿戴辅助装备、 佩戴魔法石、 梅尔文的高科技、 班图族的角质项链、 深海项链、 狙击镜的威力、 不灭之王波罗丁、 二次觉醒 - 龙跃武器、 铁鳞海贼团 (船长)、 [深渊派对]相关任务、 [盾牌]相关任务、 贪食之巨兽)` 
+
+[flavor text]
+	`<预约升级得好礼>` 
+
+[grade]
+	1 
+
+[rarity]
+	2 
+
+[usable job]
+	`[all]` 
+
+[/usable job]
+	
+
+[attach type]
+	`[trade]` 
+
+[minimum level]
+	1 
+
+[cool time]
+	1000 
+
+[price]
+	1000000 
+
+[icon]
+	`Item/stackable/consumption.img` 1666 
+
+[stackable type]
+	`[etc]` 1 
+
+[move wav]
+	`PAPER_TOUCH` 
+
+[action type]
+	`[achievement quest clear]` 
+
+[/action type]
+	
+
+[stack limit]
+	1 
+
+[use action packet]
+	0 
+
+[impossible contents]
+	`ban redeemitem` `hardcore mode` 
+
+[/impossible contents]
+	
+
+[action usable place]
+	`[village]` `[seria room]` 
+
+[/action usable place]
+	
+
+[item category]
+	`event` 
+
+[/item category]

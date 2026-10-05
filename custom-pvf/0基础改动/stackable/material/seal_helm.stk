@@ -1,0 +1,44 @@
+[name]
+	`赫仑皇帝的印章` 
+
+[explain]
+	`德洛斯帝国皇帝赫仑的印章， 是用设计图合成物品的高级材料。 (该道具可以通过在地下城击杀怪物获得)` 
+
+[grade]
+	20 
+
+[rarity]
+	1 
+
+[usable job]
+	`[all]` 
+
+[/usable job]
+	
+
+[attach type]
+	`[free]` 
+
+[minimum level]
+	1 
+
+[weight]
+	1 
+
+[price]
+	10000 
+
+[icon]
+	`Item/IconMaterial.img` 35 
+
+[field image]
+	`Item/FieldImage.img` 30 
+
+[stackable type]
+	`[material]` 10 
+
+[item group name]
+	`cloth stuff` 
+
+[move wav]
+	`SKIN_TOUCH`

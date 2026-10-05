@@ -1,0 +1,71 @@
+[name]
+	`壕罐的增幅秘笈` 
+
+[explain]
+	`使用后， 可增加增幅成功几率， 持续3分钟。` 
+
+[flavor text]
+	`<壕罐的财宝之城>` 
+
+[grade]
+	1 
+
+[attach type]
+	`[trade]` 
+
+[rarity]
+	2 
+
+[usable job]
+	`[all]` 
+
+[/usable job]
+	
+
+[minimum level]
+	1 
+
+[stack limit]
+	100 
+
+[price]
+	10000 
+
+[icon]
+	`Item/stackable/consumption_cn.img` 967 
+
+[field image]
+	`Item/FieldImage.img` 32 
+
+[stackable type]
+	`[item upgrad buff amplify upgrade]` 5000 
+
+[expert type]
+	`[alchemist]` 
+
+[item group name]
+	`potion` 
+
+[cool time]
+	180000 
+
+[move wav]
+	`POTION_TOUCH` 
+
+[cooltime maintenance]
+	1 1 1 
+
+[effect maintenance]
+	1 1 1 0 
+
+[stat change duration]
+	180000 `myself` 
+
+[action usable place]
+	`[village]` `[seria room]` 
+
+[/action usable place]
+	
+
+[cooltime group]
+	20150129

@@ -1,0 +1,65 @@
+[name]
+	`顶级智力灵药` 
+
+[grade]
+	80 
+
+[attach type]
+	`[free]` 
+
+[rarity]
+	2 
+
+[weight]
+	1 
+
+[usable job]
+	`[all]` 
+
+[/usable job]
+	
+
+[minimum level]
+	80 
+
+[stack limit]
+	1000 
+
+[price]
+	10000 
+
+[icon]
+	`Item/stackable/consumption.img` 980 
+
+[field image]
+	`Item/FieldImage.img` 32 
+
+[stackable type]
+	`[waste]` 0 
+
+[expert type]
+	`[alchemist]` 
+
+[appendage group]
+	4 
+
+[item group name]
+	`potion` 
+
+[cool time]
+	10000 
+
+[move wav]
+	`POTION_TOUCH` 
+
+[stat change]
+	`+` 175 `magical attack` 
+
+[/stat change]
+	
+
+[effect maintenance]
+	1 1 1 0 
+
+[stat change duration]
+	1800000 `myself`

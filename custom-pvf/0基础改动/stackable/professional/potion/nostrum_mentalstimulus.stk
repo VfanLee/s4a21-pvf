@@ -1,0 +1,59 @@
+[name]
+	`精神刺激灵药` 
+
+[explain]
+	`使用后， 可以使所有技能的冷却时间减少20%%， 效果持续10分钟。` 
+
+[grade]
+	1 
+
+[rarity]
+	2 
+
+[usable job]
+	`[all]` 
+
+[/usable job]
+	
+
+[attach type]
+	`[free]` 
+
+[minimum level]
+	1 
+
+[weight]
+	1 
+
+[cool time]
+	1800000 
+
+[price]
+	10000 
+
+[icon]
+	`Item/stackable/consumption.img` 434 
+
+[field image]
+	`Item/FieldImage.img` 32 
+
+[stackable type]
+	`[waste]` 0 
+
+[item group name]
+	`potion` 
+
+[cooltime group]
+	13 
+
+[move wav]
+	`POTION_TOUCH` 
+
+[stack limit]
+	1000 
+
+[expert type]
+	`[alchemist]` 
+
+[cooltime group]
+	13

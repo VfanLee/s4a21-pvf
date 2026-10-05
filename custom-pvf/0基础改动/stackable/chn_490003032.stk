@@ -1,0 +1,73 @@
+[name]
+	`二次觉醒完成券` 
+
+[explain]
+	`使用后， 可以自动完成二次觉醒任务。` 
+
+[flavor text]
+	`<冒险家征集令>` 
+
+[grade]
+	1 
+
+[rarity]
+	2 
+
+[usable job]
+	`[swordman]` `[at swordman]` `[fighter]` `[gunner]` `[mage]` `[at mage]` `[priest]` `[at gunner]` `[at fighter]` `[thief]` `[knight]` `[demonic lancer]` 
+
+[/usable job]
+	
+
+[attach type]
+	`[account]` 
+
+[minimum level]
+	75 
+
+[cool time]
+	1000 
+
+[price]
+	1000000 
+
+[icon]
+	`Item/stackable/consumption.img` 1639 
+
+[icon mark]
+	`Item/IconMark.img` 34 
+
+[stackable type]
+	`[etc]` 1 
+
+[move wav]
+	`PAPER_TOUCH` 
+
+[action type]
+	`[second awaken clear]` 0 
+
+[/action type]
+	
+
+[stack limit]
+	100 
+
+[use action packet]
+	1 
+
+[impossible contents]
+	`hardcore mode` 
+
+[/impossible contents]
+	
+
+[item category]
+	`event` 
+
+[/item category]
+	
+
+[action usable place]
+	`[village]` `[seria room]` 
+
+[/action usable place]

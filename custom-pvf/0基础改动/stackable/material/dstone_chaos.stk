@@ -1,0 +1,45 @@
+#PVF_File
+
+[name]
+	`混沌魔石`
+
+[explain]
+	`该道具可以在莎兰那里兑换1期勇者装备， 或者用作任务材料。 (在死亡之塔、 异界地下城或王的遗迹等地区获得该道具)`
+
+[grade]
+	1
+
+[rarity]
+	2
+
+[usable job]
+	`[all]`
+[/usable job]
+
+[attach type]
+	`[free]`
+
+[minimum level]
+	1
+
+[weight]
+	1
+
+[icon]
+	`Item/stackable/material.img`	184
+
+[field image]
+	`Item/FieldImage.img`	24
+
+[stackable type]
+	`[material]`	1
+
+[item group name]
+	`stuff etc`
+
+[move wav]
+	`JEWEL_TOUCH`
+
+[need material]
+	3229	10
+[/need material]

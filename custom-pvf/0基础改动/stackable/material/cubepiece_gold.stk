@@ -1,0 +1,44 @@
+[name]
+	`金色小晶块` 
+
+[explain]
+	`完成任务所需的材料， 同时可以用于副职业生产和晶之契约。 (分解稀有或神器装备时可以获得该道具)` 
+
+[grade]
+	5 
+
+[rarity]
+	2 
+
+[usable job]
+	`[all]` 
+
+[/usable job]
+	
+
+[attach type]
+	`[free]` 
+
+[minimum level]
+	1 
+
+[value]
+	400 
+
+[price]
+	10000 
+
+[icon]
+	`Item/stackable/material.img` 293 
+
+[field image]
+	`Item/FieldImage.img` 30 
+
+[stackable type]
+	`[material]` 8 
+
+[item group name]
+	`cube stuff` 
+
+[move wav]
+	`CUBE_TOUCH`

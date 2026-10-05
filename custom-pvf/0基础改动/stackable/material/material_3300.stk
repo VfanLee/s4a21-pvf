@@ -1,0 +1,41 @@
+#PVF_File
+
+[name]
+	`虚空魔石碎片`
+
+[explain]
+	`使用后， 可以扩张账号金库， 同时是完成天界任务的必备材料。 (可以通过杀怪或分解勇者装备获得该道具； 在NPC莎兰那里可以兑换虚空魔石)`
+
+[grade]
+	1
+
+[rarity]
+	2
+
+[usable job]
+	`[all]`
+[/usable job]
+
+[attach type]
+	`[free]`
+
+[minimum level]
+	1
+
+[weight]
+	1
+
+[price]
+	10000
+
+[icon]
+	`Item/stackable/material.img`	346
+
+[field image]
+	`Item/FieldImage.img`	24
+
+[stackable type]
+	`[material]`	0
+
+[move wav]
+	`JEWEL_TOUCH`

@@ -1,0 +1,71 @@
+[name]
+	`斗神之吼秘药` 
+
+[explain]
+	`使用后， 可以增加12%%伤害， 效果持续60秒。` 
+
+[grade]
+	9 
+
+[attach type]
+	`[free]` 
+
+[rarity]
+	1 
+
+[weight]
+	1 
+
+[usable job]
+	`[all]` 
+
+[/usable job]
+	
+
+[minimum level]
+	1 
+
+[stack limit]
+	1000 
+
+[price]
+	10000 
+
+[icon]
+	`Item/stackable/consumption.img` 991 
+
+[field image]
+	`Item/FieldImage.img` 20 
+
+[stackable type]
+	`[waste]` 0 
+
+[expert type]
+	`[alchemist]` 
+
+[appendage group]
+	6 
+
+[item group name]
+	`potion` 
+
+[cool time]
+	60000 
+
+[move wav]
+	`POTION_TOUCH` 
+
+[effect maintenance]
+	0 1 1 0 
+
+[stat change]
+	`%` 12 `physical attack bonus` `%` 12 `magical attack bonus` 
+
+[/stat change]
+	
+
+[use effect explain]
+	0 
+
+[stat change duration]
+	60000 `myself`

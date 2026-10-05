@@ -1,0 +1,45 @@
+[name]
+	`最下级砥石` 
+
+[explain]
+	`制作首饰的基础材料， 可以在罗杰处加工成更高级的砥石。
+(该道具可以通过在地下城击杀怪物获得)` 
+
+[grade]
+	1 
+
+[rarity]
+	1 
+
+[usable job]
+	`[all]` 
+
+[/usable job]
+	
+
+[attach type]
+	`[free]` 
+
+[minimum level]
+	1 
+
+[weight]
+	1 
+
+[price]
+	10000 
+
+[icon]
+	`Item/stackable/material.img` 74 
+
+[field image]
+	`Item/FieldImage.img` 24 
+
+[stackable type]
+	`[material]` 1 
+
+[item group name]
+	`mineral stuff` 
+
+[move wav]
+	`BONE_TOUCH`

@@ -1,0 +1,61 @@
+[name]
+	`辅助装备任务完成券` 
+
+[explain]
+	`使用后， 可以自动完成辅助装备任务。` 
+
+[flavor text]
+	`<冒险家征集令>` 
+
+[grade]
+	1 
+
+[rarity]
+	2 
+
+[usable job]
+	`[swordman]` `[at swordman]` `[demonic swordman]` `[at fighter]` `[at mage]` `[mage]` `[fighter]` `[gunner]` `[at gunner]` `[knight]` `[priest]` `[creator mage]` `[thief]` `[demonic lancer]` 
+
+[/usable job]
+	
+
+[attach type]
+	`[account]` 
+
+[minimum level]
+	60 
+
+[price]
+	1000000 
+
+[icon]
+	`Item/stackable/consumption_cn.img` 1049 
+
+[icon mark]
+	`item/IconMark.img` 135 
+
+[stackable type]
+	`[etc]` 0 
+
+[move wav]
+	`PAPER_TOUCH` 
+
+[action type]
+	`[any quest clear]` 674 649 
+
+[/action type]
+	
+
+[item category]
+	`event` 
+
+[/item category]
+	
+
+[stack limit]
+	1000 
+
+[impossible contents]
+	`gift` 
+
+[/impossible contents]

@@ -1,0 +1,64 @@
+[name]
+	`冻死的剑士歌拉斯` 
+
+[explain]
+	`使用后， 可以召唤出冻死的剑士歌拉斯协助召唤者攻击敌人， 冻死的剑士歌拉斯存在15分钟。` 
+
+[grade]
+	1 
+
+[attach type]
+	`[trade]` 
+
+[rarity]
+	1 
+
+[weight]
+	1 
+
+[usable job]
+	`[all]` 
+
+[/usable job]
+	
+
+[minimum level]
+	1 
+
+[stack limit]
+	1000 
+
+[price]
+	10000 
+
+[icon]
+	`Item/stackable/consumption.img` 416 
+
+[field image]
+	`Item/FieldImage.img` 32 
+
+[stackable type]
+	`[waste]` 0 
+
+[expert type]
+	`[doll_controller]` 
+
+[sub type]
+	2 
+
+[cool time]
+	900000 
+
+[cooltime group]
+	100 
+
+[move wav]
+	`FOOD_TOUCH` 
+
+[summon apc]
+	413 35 35 900000 1 
+
+[impossible contents]
+	`gift` 
+
+[/impossible contents]

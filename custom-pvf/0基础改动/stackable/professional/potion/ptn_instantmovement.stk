@@ -1,0 +1,71 @@
+#PVF_File
+
+[name]
+	`瞬间移动药剂`
+
+[explain]
+	`使用后， 可以移动到其他区域的赛丽亚旅馆。`
+
+[grade]
+	1
+
+[rarity]
+	2
+
+[usable job]
+	`[all]`
+[/usable job]
+
+[attach type]
+	`[free]`
+
+[minimum level]
+	1
+
+[weight]
+	0
+
+[cool time]
+	10000
+
+[price]
+	10000
+
+[icon]
+	`Item/stackable/consumption.img`	396
+
+[field image]
+	`Item/FieldImage.img`	32
+
+[stackable type]
+	`[teleport potion]`	0
+
+[item group name]
+	`potion`
+
+[move wav]
+	`POTION_TOUCH`
+
+[string data]
+	``
+	``
+	``
+	``
+	``
+	``
+	``
+	``
+	``
+	``
+	``
+	``
+	``
+	``
+[/string data]
+
+[expert type]
+	`[alchemist]`
+
+[int data]
+	1	2	3	4	5	6	9	11	14	18	20	21	22
+[/int data]

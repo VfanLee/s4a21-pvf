@@ -1,0 +1,73 @@
+[name]
+	`一次觉醒完成券` 
+
+[explain]
+	`使用后， 可以自动完成一次觉醒任务。` 
+
+[flavor text]
+	`<冒险家征集令>` 
+
+[grade]
+	1 
+
+[rarity]
+	2 
+
+[usable job]
+	`[all]` 
+
+[/usable job]
+	
+
+[attach type]
+	`[account]` 
+
+[minimum level]
+	50 
+
+[cool time]
+	1000 
+
+[price]
+	1000000 
+
+[icon]
+	`Item/stackable/consumption.img` 1586 
+
+[icon mark]
+	`Item/IconMark.img` 34 
+
+[stackable type]
+	`[etc]` 1 
+
+[move wav]
+	`PAPER_TOUCH` 
+
+[action type]
+	`[first awaken clear]` 1 1 
+
+[/action type]
+	
+
+[stack limit]
+	100 
+
+[use action packet]
+	1 
+
+[impossible contents]
+	`hardcore mode` `ban redeemitem` 
+
+[/impossible contents]
+	
+
+[item category]
+	`event` 
+
+[/item category]
+	
+
+[action usable place]
+	`[village]` `[seria room]` 
+
+[/action usable place]

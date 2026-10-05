@@ -1,0 +1,70 @@
+[name]
+	`外传任务完成券` 
+
+[explain]
+	`使用后， 可以自动完成当前Lv为止的所有外传任务。` 
+
+[flavor text]
+	`<全职Lv预约得好礼>` 
+
+[grade]
+	1 
+
+[rarity]
+	2 
+
+[usable job]
+	`[all]` 
+
+[/usable job]
+	
+
+[attach type]
+	`[trade]` 
+
+[minimum level]
+	5 
+
+[cool time]
+	1000 
+
+[price]
+	1000000 
+
+[icon]
+	`Item/stackable/consumption.img` 1639 
+
+[icon mark]
+	`Item/IconMark.img` 34 
+
+[stackable type]
+	`[etc]` 1 
+
+[move wav]
+	`PAPER_TOUCH` 
+
+[maximum level]
+	86 
+
+[action type]
+	`[quest clear]` 
+
+[/action type]
+	
+
+[stack limit]
+	1 
+
+[use action packet]
+	0 
+
+[impossible contents]
+	`ban redeemitem` `hardcore mode` 
+
+[/impossible contents]
+	
+
+[item category]
+	`event` 
+
+[/item category]
