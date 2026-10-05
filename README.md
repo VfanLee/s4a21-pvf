@@ -1,8 +1,25 @@
-# S4A21 PVF Skills
+# S4A21 次元彼端 PVF 开发参考
 
-Agent skill pack for **86JP S4A21** PVF. Not the unpacked script tree.
+## 适用版本
 
-- Structure and ID relationships (agent): [`AGENTS.md`](AGENTS.md)
-- General edit workflow (agent): [`.agents/skills/SKILL.md`](.agents/skills/SKILL.md)
-- Scenario skills (agent): [NPC shops](.agents/skills/npc-shop/SKILL.md), [CERA shop](.agents/skills/cera-shop/SKILL.md), [item definitions and package rewards](.agents/skills/items/SKILL.md), [gold drops](.agents/skills/gold-drop/SKILL.md)
-- Chinese notes (maintainer): [`docs/`](docs/README.md)
+- ServerS4A21：服务端
+- S4A21ClientPatch：客户端补丁
+- S4A21GmTool：GM
+- pvf：以 S4A21 次元彼端为准
+
+## 使用范围
+
+技能针对 S4A21 次元彼端 PVF；每次以实际提供或明确指定的 PVF 为准，不自动选择本地底板。
+未提供 PVF 时，只依据已有技能回答；未记录的知识明确说明不确定，不猜测配置。
+
+三个参考项目默认只读。`custom-pvf` 由用户手动整理，AI 仅按需只读，禁止写入或自动套用。
+数据库修改只能由用户执行；AI 可以参考服务端代码讲解表字段和手动修复方法，不能改数据。
+确认新规则或旧记录有误时，同步更新技能与中文速查。
+
+## 使用入口
+
+本仓库维护 PVF 修改技能与开发参考文档，不是解包后的脚本树。
+`AGENTS.md` 和 `.agents/skills/` 用英文，供 AI 执行；本页和 `docs/` 用中文，供 PVF 开发者查阅。
+
+- AI 规则与技能：[`AGENTS.md`](AGENTS.md)、[技能总入口](.agents/skills/SKILL.md)
+- PVF 开发参考：[中文文档目录](docs/README.md)

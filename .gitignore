@@ -6,3 +6,6 @@
 !.agents/**
 !docs/
 !docs/**
+!custom-pvf/
+!custom-pvf/**
+custom-pvf/Script.pvf

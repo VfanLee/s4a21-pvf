@@ -1,7 +1,7 @@
 ---
 name: npc-shop
 description: >-
-  Edit A21 NPC shops in itemshop/*.shp: tabs, item lists, job categories,
+  Edit S4A21 次元彼端 NPC shops in itemshop/*.shp: tabs, item lists, job categories,
   listing, new shops, and NPC placement in towns or Seria's room. Use for
   adding town NPCs, NPC shop, itemshop, .shp, NPC tabs, [item list],
   or [use category]. NPC price lives on the item file. CERA cash-shop requests
@@ -9,6 +9,19 @@ description: >-
 ---
 
 # A21 NPC shops
+
+Scope: S4A21 次元彼端. Apply the target/no-target and read-only reference rules
+in [../SKILL.md](../SKILL.md) before using the schema below.
+
+## Edit boundary and read-back
+
+Close NPC registry → `.npc` shop role → shop registry → `.shp`; item IDs close
+through stackable/equipment registries. For listings, change only requested
+tabs/categories/item IDs, preserving role links, types and unrelated lists.
+For placement, change only the intended map actors/coordinates; check shared
+town/map references. Prices, effects and expiry are item-definition edits.
+Reopen and compare the planned paths, item sequence and reference links;
+verify appearance, tabs and actual purchase separately in-game.
 
 Tab = `[tab]`. Category = `[use category]` / `[category entry]`. Not the same layer.
 
@@ -20,7 +33,7 @@ CERA cash-shop product records, prices, and pages: [../cera-shop/SKILL.md](../ce
 
 Do not mix the three numbers. Forward close is in [`AGENTS.md`](../../../AGENTS.md).
 
-Example: 卡妮娜 NPC ID `3`, `npc/Kanna.npc` shop ID `84`, file `itemshop/84_Kanna.shp`. `[NPC] 3` ≠ shop ID `84`.
+Read the task target for actual NPC/shop IDs; filenames and example IDs are not registry authority.
 
 Other entries may be `[product item]` or `[secret shop]`. A static secret-shop close does not mean it appears in-game.
 
@@ -47,7 +60,34 @@ choosing a file; basename matches or missing `map.lst` rows do not prove a town
 map is unused. Copy the existing `[NPC]` shape and preserve existing actors.
 Verify position, walkability, appearance, interaction, and shop behavior in-game.
 
+An NPC-ID placement search can match ordinary, mirrored, dream and event maps.
+Close each candidate against registered `.twn` area references before naming
+the active town map; duplicate NPC coordinates do not identify the loaded file.
+Body-width descriptions are approximate placement requests, not a fixed PVF
+unit: propose an X offset with the original Y and verify spacing in-game.
+For a horizontal move, decrease X to move left and increase X to move right;
+preserve Y, direction and flags for position-only edits.
+
 ## Outer skeleton
+
+When diagnosing an invisible custom NPC, separate map placement/registry,
+appearance resources and shop parsing. A `.shp` containing NPC tags such as
+`[field animation]`, `[role]` and `[dialog]` without a shop sell definition is
+not a valid shop template; changing its extension does not convert it.
+For relocated `.npc` definitions, verify animation dependency paths and their
+resolution base on the target client before claiming appearance support.
+Keep an existing proven directory layout as the diagnostic baseline; do not
+attribute invisible actors to malformed shop data without an appearance test.
+An invisible actor whose named interaction menu opens has already spawned;
+prioritize `[field animation]`, its `.ani` and `[IMAGE]` resource chain rather
+than reallocating IDs or changing coordinates. A menu's shop option does not
+prove the shop opens or purchases work. Compare decoded animation content as
+well as reference paths; identical `.ani` data does not prove that a relocated
+NPC resolves it or that the client NPK supplies its images.
+Reuse appearance through `.npc` `[small face]`, `[big face]`, `[popup face]`
+and `[field animation]`; optional ambient/dialogue sound fields also belong
+there. Keep the custom name and role/shop link independent of copied visuals.
+NPC dialogue and favor records are not required merely to reuse appearance.
 
 ```text
 [NPC]
@@ -58,7 +98,7 @@ Verify position, walkability, appearance, interaction, and shop behavior in-game
 	...tabs or items...
 [/sell info]
 [message]
-	`商店对话`
+	`Shop dialogue`
 ```
 
 Keep the target shop's existing `[type]` (`[etc shop]`, `[expert shop]`, …). Do not swap in an unchecked type.
@@ -72,13 +112,13 @@ Each `[tab]` is a sibling with its own `[item list]`. Do not nest a second `[ite
 ```text
 [sell info]
 	[tab]
-		`消耗品`
+		`Consumables`
 		[item list]
 			1150 1151 1153
 		[/item list]
 	[/tab]
 	[tab]
-		`其它`
+		`Other`
 		[item list]
 			10099377
 		[/item list]
@@ -97,7 +137,7 @@ Snippets above are structural fragments, not full shops.
 	[use category]
 		`basic job`
 	[tab]
-		`神器`
+		`Rare`
 		[category entry]
 			[id]
 				0
@@ -107,7 +147,7 @@ Snippets above are structural fragments, not full shops.
 		[/category entry]
 	[/tab]
 	[tab]
-		`消耗品`
+		`Consumables`
 		[item list]
 			10088618
 		[/item list]
@@ -124,7 +164,9 @@ PVF also has `job`, `expert job`, `expert job non filter`, `pvp job`. Do not reu
 - `StackableShop1.shp`: `[item list]` directly under `[sell info]`.
 - `AbelroExpert.shp` (`[expert shop]`): `[category entry]` directly under `[sell info]`, plus `[use toggle]` / `[expert job level]`.
 
-Current `ItemShopFile` **does not extract items** from either. Keep that NPC's existing shape. Do not copy expert-job toggles onto a normal shop.
+Reference `PvfLib.ItemShopFile` **does not extract items** from either. This is
+a tool-index limitation, not proof that the shop is invalid at runtime. Keep
+that NPC's existing shape; do not copy expert-job toggles onto a normal shop.
 
 ### Daily rotation
 
@@ -165,4 +207,7 @@ GM/tool shop indexes cannot prove category tabs or tabless shops. Verify categor
 | CERA shop | Follow [cera-shop](../cera-shop/SKILL.md) |
 | Medals / other currencies | Trace the target client's and server's handler first; do not infer a price path from `[medal]` alone |
 
-In-game: find the NPC → open shop → check tabs / job categories / order → check price → buy or exchange → check Chinese text. If the tool index disagrees, trust the client.
+In-game: find the NPC → open shop → check tabs / job categories / order → check
+price → buy or exchange → check Chinese text. A partial tool index does not
+override the actual definitions or observed UI. A client/server transaction
+conflict needs investigation, not blanket preference for either side.

@@ -1,21 +1,38 @@
 ---
 name: dungeon-difficulty
 description: >-
-  Inspect, compare, or adjust A21 dungeon difficulty: global and independent
+  Inspect, compare, or adjust S4A21 次元彼端 dungeon difficulty: global and independent
   monster/APC tables, .dgn difficulty fields, and registered dungeon entrances.
-  Use for 白图难度, monsterapcdifficultybonus.tbl, monsterapc diff table,
+  Use for ordinary-dungeon difficulty, monsterapcdifficultybonus.tbl, monsterapc diff table,
   difficulty comparisons, or checking whether legacy dungeons have entrances.
   Gold and item drop rates belong to gold-drop and item-drop.
 ---
 
 # A21 dungeon difficulty
 
+Scope: S4A21 次元彼端. Apply [../SKILL.md](../SKILL.md) for designated
+targets, no-target answers, conflicts and read-only reference projects.
+
+## Edit boundary and read-back
+
+Resolve dungeon IDs through `dungeon.lst`, independent-table paths from `.dgn`,
+and entrance links through town/worldmap/dungeon/map registries or explicit paths.
+Group all consumers of shared tables/regions before editing. Change only verified
+attributes/columns or agreed entrance references; unknown blocks keep their values
+and are not assigned guessed labels. Reopen, compare numeric types/order and
+close references, then verify combat or entrance behavior separately in-game.
+
 Read [../SKILL.md](../SKILL.md) for archive writes, validation, and change records.
-These rules apply to this project's A21 runtime; do not import another version's
+These rules apply to the documented S4A21 次元彼端 runtime; do not import another version's
 block labels, difficulty names, or line numbers.
 
 ## Find the effective configuration
 
+- `etc/ultimatedungeonlist.etc [apply ultimate]` is a flat dungeon-ID list;
+  resolve each integer through `dungeon/dungeon.lst`, not as ID/value pairs.
+  Reference ServerS4A21 C# sources have no loader reference to this file/tag.
+  Membership alone does not establish difficulty unlocks, stat scaling, drop
+  bonuses, or the original meaning of "ultimate"; verify the actual consumer.
 - `dungeon/dungeon.lst` maps dungeon ID to a relative `.dgn` path; it is not the
   dungeon's configuration. Resolve the registered path, then read `[name]` and
   the definition. Distinguish same-name normal, quest, event, and legacy variants.
@@ -39,7 +56,7 @@ Arad via registered worldmap `[dungeon]` -> wrapper `.dgn`, and
 `etc/crackofdimensionlist.etc [crack info list]` dungeon/quest pairs -> actual
 historical `.dgn` and registered quest. Inspect `[mob level charac level replace
 flag]`, `[basis level]`, `[crack of dimension dungeon]`, `[revision table]`, and
-map monster level fields separately. Current ServerS4A21 parses the character
+map monster level fields separately. Reference ServerS4A21 parses the character
 level replacement flag but has no consumer reference to that property; do not
 promise values 0/1/2 implement a verified scaling policy. Its ordinary actor
 projector uses map Lv as the switch: nonzero -> dungeon basis level + AutoLv,
@@ -50,7 +67,7 @@ character-level or quest-level scaling or revision-table formulas.
 
 ## Story-mode configuration
 
-In this project's A21 runtime, story dungeons in **simple mode (简单模式)**
+In the documented S4A21 次元彼端 runtime, story dungeons in **simple mode**
 use the global difficulty table with the same difficulty behavior as ordinary
 dungeons; the global white-dungeon block also affects this mode. Do not extend
 this rule to other story difficulty modes or assume an unverified column index
@@ -61,7 +78,7 @@ the global table and any explicit independent-table reference. Identify the
 mode from the registered `.dgn` `[story mode]`, not from a quest-like name or
 folder alone. This block can contain `[difficulty size]`, `[first difficulty
 rate]`, `[increase difficulty rate]`, `[increase exp rate]`, and `[quest list]`.
-The current dungeon parser preserves these arrays and quest links; parsing
+The reference ServerS4A21 dungeon parser preserves these arrays and quest links; parsing
 does not prove their combat scaling formula. Outside the confirmed simple mode,
 do not promise that editing the white-dungeon block changes story combat, or
 that the story table replaces or multiplies the global table, without consumer
@@ -74,7 +91,7 @@ The untagged prefix has four blocks in this project's inspected A21 layout:
 
 | Block | Numeric positions, one-based | Attribute groups | Values per group | Scope |
 | --- | --- | --- | --- | --- |
-| 1 | 1–65 | 13 | 5 | Ordinary dungeons (白图) |
+| 1 | 1–65 | 13 | 5 | Ordinary dungeons |
 | 2 | 66–130 | 13 | 5 | Unconfirmed |
 | 3 | 131–182 | 13 | 4 | Unconfirmed |
 | 4 | 183–234 | 13 | 4 | Unconfirmed |
@@ -98,7 +115,7 @@ than assumed to have the same prefix length.
 
 ## Read and compare accurately
 
-- Use a PVF-aware reader. Existing local `PvfLib.PvfArchive` supports
+- Use a PVF-aware reader. Reference `PvfLib.PvfArchive` supports
   `GetFileContent` and `GetFileRawData`; confirm its actual API before use.
   `TableFile.Parse` retains only `long.TryParse` values and cannot fully read
   mixed float/tag tables. Type 1 integer tokens are type 0, floats type 2.
@@ -125,6 +142,73 @@ all numeric tokens as if every field were an HP multiplier.
 
 ## Entrance availability and verification
 
+Existing town areas can host ordinary selection entrances: MAP `[town movable
+area]` rows ending `-1 -1` open the current area's dungeon selection; the TOWN
+area must have `[dungeon gate]` pointing to a registered worldmap region.
+Gate animations are visual resources, not the destination binding. Trace the
+area's exact MAP path and any deployment-selected variants before changing it.
+When adopting an entrance animation, close MAP -> relative ANI -> IMAGE path
+and frame references. The ANI must exist in the target PVF even when its image
+already exists in the client's NPK; copy only missing required definitions.
+A configured direct town entrance does not require a new intermediary area.
+For an entrance-only probe, reuse a registered ordinary region with unchanged
+WDM, XUI, dungeon registry and dungeon/MAP definitions; validate the town
+return projection and existing start/Boss room loading separately. Each TOWN
+area has one dungeon-gate region binding, so multiple local `-1 -1` triggers
+within it share that destination. Distinct destinations need distinct bound
+areas or another separately verified routing mechanism.
+Replacing a registered region's WDM dungeon list and referenced XUI changes
+the selection for every town gate bound to that region. For a probe using an
+already working entrance, preserve the town binding and physical trigger,
+align WDM dungeon/quest entries with XUI dungeonIndex values, and verify
+ordinary admission and ticket conditions separately. Keep the original dungeon
+definitions and a rollback archive; shared-region replacement is not an
+entrance-specific destination change.
+For a visible but inactive town link, correlate real player foot coordinates
+with the trigger and walkable rectangles, then inspect whether the client
+reports SET_USER_AREA to the intended area or ENTER_SELECT_DUNGEON while still
+in the source area. Parsed destination/return-point validity does not prove a
+client transition. Treat walk-boundary trigger changes as probes until tested.
+The reference ServerS4A21 town-return projector reads an area's `MapPath`
+directly under `map/`; that lookup does not use `map/map.lst`. Do not confuse
+this path-based town MAP lookup with registered dungeon-room MAP IDs. A
+same-directory town MAP clone can preserve raw payload and relative resources
+when only the TOWN area binding changes; check its back-link and return point.
+After a client crash, restore only the known changed deployment files from a
+hash-verified pre-change backup, retain the failing package, and distinguish
+file restoration from process restart. Do not infer the crash cause from a
+successful server-only parser test.
+When a selection crash is reported, verify the hashes of both deployed
+archives and retain the corresponding runtime logs before another probe.
+An observed ENTER_SELECT_DUNGEON request followed by a successfully sent
+response establishes that the trigger reached the server; it does not prove
+that the client loaded WDM/XUI or identify the crash cause. Preserve XUI control
+order when editing buttons, and mark failed client tests separately from
+successful static validation. If automatic deployment was excluded, provide
+the verified rollback archive without replacing running files.
+
+For independent legacy clones in reference ServerS4A21, give copied MAPs a
+separate directory as well as a new `[dungeon]` owner and registry ID; ordinary
+room pools also use directories. Rewrite relative resource references from
+the new directory to existing assets. Use explicit `[map specification]`
+entries to avoid filename-coordinate fallbacks. Check every nonempty maze
+cell against the selected MAP's entrance mask, reciprocal neighboring doors,
+start-room actors, Boss actors and town return projection. A successful archive
+reload or generic parser self-test alone does not verify connected rooms.
+The A..P mask is letter minus A: right 1, above 2, left 4, below 8;
+MAP greed uses the second two-character symbol in each pair as entrance mask.
+Client selection controls, minimap labels and actual play still need in-game
+verification; registry closure does not prove world-map presentation.
+
+Reference ServerS4A21 loads ordinary dungeon and worldmap definitions from PVF
+registries; reusing supported ordinary layouts can add selectable dungeons
+without changing server source. Close town area `[dungeon gate]` region ID,
+`worldmap.lst` registration, WDM `[dungeon]` ID/quest pairs, and `dungeon.lst`
+definitions. Client WDM `[ui path]` and image assets must support the selection
+layout; server data loading does not create missing client UI or new mechanics.
+Inspect reused legacy definitions for entry items, required level, basis level
+and special-mode flags before presenting them as ordinary low-level dungeons.
+
 For an A21 manual-abyss availability list, close active town gates and
 registered worldmap regions before listing registered dungeons. Require region
 `[hell dungeon] 1`, its registered `[hell quest]` prerequisites, and a usable
@@ -133,8 +217,8 @@ resolve the map through `map/map.lst`, and confirm `[hellparty]` content;
 coordinate-named `hell_` maps are a separate runtime fallback. A region flag
 alone, or a dungeon `[hell dungeon]` value alone, does not prove availability.
 Parse WDM dungeon entries as dungeon ID, optional `[in progress]`, then quest
-ID across whitespace; identify quest-only variants separately. The current
-server requires every positive region hell-quest ID to be completed, even when
+ID across whitespace; identify quest-only variants separately. Reference
+ServerS4A21 requires every positive region hell-quest ID to be completed, even when
 that ID is absent from `quest.lst`; report dangling gates rather than calling
 those regions unlocked. Saved completion state can differ by character.
 

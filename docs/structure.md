@@ -2,6 +2,19 @@
 
 对应 [`AGENTS.md`](../AGENTS.md)。本仓库是 skill 包，不是解包后的脚本树。
 
+PVF 内部路径可复用，本机绝对路径和工具位置由这次指定的目标与执行环境确定。
+应用已记录的规则不要求携带旧电脑目录、服务端源码或历史附件；目标实际值和登记关系
+仍须从本次提供的 PVF 读取，不能套用旧包内容。
+
+## 目标与只读参考
+
+- 有 PVF/解包目录：以当次提供或明确指定的目标为准，不自动挑选其他包或基线。
+- 无目标：只按技能中已记录的知识回答，说明未核实实际配置；缺少记录就明确说不确定、无法提供可靠结论。
+- `ServerS4A21`、`S4A21ClientPatch`、`S4A21GmTool` 默认只读，用于排查字段与读取行为；服务端问题由用户自行修改。
+- `custom-pvf` 是用户的学习、导入和分享资料，AI 仅按需只读，不写入、整理、改名、删除或自动套用。
+- 数据库仅用户可修改。AI 可参考代码解释字段、提供手动示例，不能写数据或代跑修复脚本。
+- 技能、目标内容与代码冲突时先调查并说明；方案需要变化时，与用户决定后再改。
+
 查询或修改中确认了新的可复用事实，交付前同一轮写入对应技能/AGENTS.md 和中文页。
 内容精炼，只写已确认的操作规则和字段含义，保留必要的版本/运行环境范围。
 不写来源叙述、历史案例、参考包名称、一次性数值或不确定的解释，不依赖旧任务附件。
@@ -93,7 +106,7 @@ itemshop/itemshop.lst → 商店 ID → itemshop/*.shp
 .shp 的 [NPC] 后面的数字 = NPC ID（回指，不能替代上面那条链）
 ```
 
-例：卡妮娜 NPC ID `3`，商店 ID `84`，文件 `itemshop/84_Kanna.shp`。文件里的 `[NPC] 3` 不是商店号。
+NPC 编号、角色绑定的商店编号及上架物品编号分别读取，文件名不证明编号。
 
 ## 职责分层
 
@@ -104,7 +117,8 @@ itemshop/itemshop.lst → 商店 ID → itemshop/*.shp
 
 ## 运行时以谁为准
 
-各技能中的买卖价格、期限、礼包发放、点券购买及金币掉落规则，适用于本项目的 A21 客户端与服务端。
+买卖价格、期限、礼包发放、点券购买及掉落算法描述参考 ServerS4A21/客户端的行为，
+不是只凭 PVF 标签推断的功能。目标实际值和游戏验证结果分开报告。
 
 Script.pvf 里的图标路径**不证明**客户端 NPK 里真有这张图。
 
@@ -112,6 +126,7 @@ Script.pvf 里的图标路径**不证明**客户端 NPK 里真有这张图。
 
 | 要改什么 | 中文 | 模型 |
 | --- | --- | --- |
+| 脚本路径、职业与技能树定位 | [定位索引](skills/script-navigation.md) | [script navigation](../.agents/skills/references/script-navigation.md) |
 | 城镇/赛丽亚房间 NPC 放置、商店页签、上架、分类、`.shp` | [skills/npc-shop.md](skills/npc-shop.md) | `.agents/skills/npc-shop/SKILL.md` |
 | 点券商城上架、售价、页面、契约、商品迁移 | [skills/cera-shop.md](skills/cera-shop.md) | `.agents/skills/cera-shop/SKILL.md` |
 | 道具定义、NPC 道具价格、期限、礼包与任务奖励、`.stk` / `.equ` | [skills/items.md](skills/items.md) | `.agents/skills/items/SKILL.md` |

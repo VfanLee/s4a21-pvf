@@ -1,27 +1,41 @@
 ---
 name: gold-drop
 description: >-
-  Inspect or edit A21 dungeon gold drop probability, amount, variance, and
-  clear-card gold multipliers. Use for 金币爆率, 金币掉落数量, 金币倍率, or
-  ItemDropInfo gold tables. Covers current ServerS4A21 interpretation; NPC
+  Inspect or edit S4A21 次元彼端 dungeon gold drop probability, amount, variance, and
+  clear-card gold multipliers. Use for gold drop probability, quantity, multipliers, or
+  ItemDropInfo gold tables. Covers reference ServerS4A21 interpretation; NPC
   buy/sell prices belong to items, and CERA prices belong to cera-shop.
 ---
 
 # A21 gold drops
 
+Scope: S4A21 次元彼端. Apply [../SKILL.md](../SKILL.md) for target/no-target
+handling and read-only references. Formulas here describe reference ServerS4A21,
+not effects inferred solely from PVF tag names.
+
+## Edit boundary and read-back
+
+Choose monster, object or clear-card gold before selecting the table. Resolve
+relevant dungeon/monster references when narrowing scope; table level columns
+are levels, not registry IDs. Change only the authorized amount/probability
+fields and level groups; preserve item rates and unrelated bonuses. Common
+base/variance affects several branches. Reopen and check exact changed cells,
+probability scale, rounding and overflow, then verify frequency and amount
+separately under controlled in-game conditions.
+
 Use [../SKILL.md](../SKILL.md) for authorization, output, and read-back rules.
 First distinguish monster drops, breakable-object drops, clear-card gold, and
 NPC sale/recycle prices. Amount, appearance probability, and multipliers are
-different controls. The formulas below apply to this project's A21 server.
+different controls. The formulas below apply to reference ServerS4A21.
 
 ## Configuration
 
-| PVF path / tag | Meaning in the current server |
+| PVF path / tag | Meaning in reference ServerS4A21 |
 | --- | --- |
 | `etc/itemdropinfo_common.etc` / `[gold drop ref table]` | triples: monster level, base gold, variance percent; levels 1–200 |
 | `etc/itemdropinfo_monseter.etc` / `[drop prob]` | 7-value rows; columns 1–2 are level min/max, column 3 is gold rate; preserve columns 4–7 and the spelling `monseter` |
 | same file / `[monster type drop bonusrate]` | 5 categories × 4 monster types; first category's 4 values multiply gold probability |
-| `etc/itemdropinfo_object.etc` / `[drop prob]` and bonus matrices | object gold probability is category 0; difficulty and actor-type bonuses are applied; current object actor index is 0 |
+| `etc/itemdropinfo_object.etc` / `[drop prob]` and bonus matrices | object gold probability is category 0; difficulty and actor-type bonuses are applied; reference ServerS4A21 uses object actor index 0 |
 | `etc/itemdropinfo_clearreward.etc` / `[dungeon difficulty gold drop bonusrate]` | clear-card gold amount multipliers by difficulty index |
 | same file / `[party member drop bonusrate]` | clear-card party-size multipliers; per-member calculation also divides by member count |
 
@@ -32,7 +46,7 @@ effects beyond monster drops.
 
 ## Probability and quantity
 
-For monster gold, the current code computes:
+For monster gold, reference ServerS4A21 computes:
 
 ```text
 typeRate = int(baseRate × monsterTypeBonus)
@@ -44,7 +58,7 @@ amount = max(1, int((baseGold + goldVariance) × difficultyBonus))
 ```
 
 The probability scale is 10,000 (750 corresponds to a nominal 7.5%). Integer
-division follows C# truncation. The current monster difficulty bonuses are
+division follows C# truncation. The reference ServerS4A21 monster difficulty bonuses are
 **hardcoded** as `1, 1.2, 1.4, 1.6, 1.8` for indices 0–4, affecting both rate
 and amount. `MonsterDropConfig` does not read the monster file's difficulty or
 party bonus matrices for this path. `[gold quantity]`, `[gold volume]`, and DGN

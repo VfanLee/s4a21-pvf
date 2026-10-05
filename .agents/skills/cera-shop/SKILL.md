@@ -1,13 +1,30 @@
 ---
 name: cera-shop
 description: >-
-  Inspect or edit A21 CERA cash-shop listings in etc/cerashop.etc: product
+  Inspect or edit S4A21 次元彼端 CERA cash-shop listings in etc/cerashop.etc: product
   IDs, prices, pages, premium contracts, and catalog migration from another
-  PVF. Use for 点券商城, 商城上架, CERA prices, or cerashop. For NPC .shp
+  PVF. Use for cash-shop catalogs, product listings, CERA prices, or cerashop. For NPC .shp
   shops use npc-shop; for item definitions and package rewards also load items.
 ---
 
 # A21 CERA shop
+
+Scope: S4A21 次元彼端. Apply [../SKILL.md](../SKILL.md) for the designated
+target, no-target answers and read-only reference projects.
+
+## Edit boundary and read-back
+
+Close product ID → item ID → item registry/definition, then any nested rewards
+or premium-service mappings. Listing-only work preserves item definitions;
+price/page work preserves unrelated columns and payment restrictions. A whole
+UI category can span multiple sections. Record the complete authorized scope.
+Read back token counts, product collisions, auxiliary references and unchanged
+sections; verify page/order, deducted payment and delivery separately in-game.
+
+Locate this A21 catalog at `etc/cerashop.etc`. External bookmarks naming
+`etc/newcashshop.etc` or `etc/newcashshop_restrict.etc` do not establish those
+files as this server's catalog or restriction source; inspect the actual catalog
+sections and consumer rather than creating or substituting another-version files.
 
 Read the shared workflow in [../SKILL.md](../SKILL.md). Item definitions and
 package-opening behavior belong to [../items/SKILL.md](../items/SKILL.md).
@@ -40,7 +57,28 @@ product's tier and `.equ` before changing an avatar price or duration.
 Preserve payment restrictions unless included in the requested change.
 Read the complete target section; malformed token counts must be resolved before writing.
 
+For this A21 catalog, `[gift disallowance]` lists product IDs; `[btn control]`
+uses four-token records with the product ID in column 1. `[buy restrict item]`
+also uses four-token records, but column 1 is the restriction-entry ID and
+column 2 is the product ID. Preserve columns 3–4 unless their meaning and change
+are separately established; never match its entry ID as a product reference.
+
 ## Pages and collisions
+
+For `etc/eventcharacter/cerashop.etc`, distinguish archived catalog content
+from the active purchase source. Reference ServerS4A21's CERA catalog loads
+`etc/cerashop.etc` (or its documented local fallback), with no loader reference
+to the eventcharacter catalog. Editing only the latter does not establish
+server purchase support; its client activation conditions remain unverified.
+Standard `[material]` entries have nine tokens, independent of line breaks.
+Append complete records before `[/material]`, preserving existing records;
+keep trailing flags unless their meaning has been verified. Resolve items
+and check product IDs across the active catalog before proposing an addition.
+
+For this A21 catalog, the homepage recommendation list `[hotnew sell ipg]`
+contains product-ID/presentation-value pairs. Check it separately from product
+records when investigating a missing homepage offer. Restore the complete source
+pair when recovering a filtered offer; keep its presentation value and order.
 
 In A21, `[regular package]` is the daily-package page and `[package]` is the main
 package page; character-premium entries use the limited/service UI.
@@ -72,9 +110,10 @@ Check each job and color for the eight equipment slots: hat, hair, face, breast,
 coat, pants, waist, and shoes. Skin and aura are separate slots. Keep distinct
 wing/shoulder alternatives; a second item for one slot can be a valid appearance.
 
-Use named, normal definitions. Compare animation job, variation, layer/script,
-selectable abilities, and set-effect indexes before treating definitions as
-duplicates. GM items and unidentified placeholders do not establish a sellable set.
+Resolve actual definitions and usable-job restrictions. Compare animation job,
+variation, layer/script, selectable abilities and set-effect indexes before
+classifying duplicates. GM/debug-only items or unresolved definitions do not
+establish a sellable set; a localization-placeholder name alone is not invalid.
 Rare clones have `[item category]` `clear avatar`; check the grade and eight slots
 to avoid listing advanced clones as rare avatars.
 
@@ -82,7 +121,8 @@ For cross-slot color grouping, compare the named palette and the actual appearan
 the second `[variation]` value is not a universal color index across equipment slots.
 The same named palette can use different numeric indexes in different slots.
 Same-name clones can differ in minimum level or offers; compare these fields before
-deduplicating them. Keep a complete eight-slot clone group ahead of any alternate group.
+deduplicating them. When grouping is requested, keep each eight-slot set together
+and use the user's display order; do not impose a fixed clone-first policy.
 
 For release-date ordering, use each set's first Chinese-server release, preferably
 from official sources. Equipment IDs and file timestamps are not release dates.
@@ -94,7 +134,7 @@ tokens between the original section markers. Preserve all other raw tokens and
 string-reference offsets; verify both the untouched chunks and neighboring payloads
 in the rewritten chunk after reopening the archive.
 
-For the current server, voucher payment (`paymentMode=1`) with grade 3 and offer
+For reference ServerS4A21, voucher payment (`paymentMode=1`) with grade 3 and offer
 tier 3 consumes one rare-avatar voucher (`2681594`) and sets the CERA charge to 0.
 Confirm the third `[avatar type select]` offer has duration 0. The catalog row is:
 
@@ -116,6 +156,42 @@ pages with the actual client before calling the listing complete.
 
 ## Catalog migration
 
+An authorized UI category restoration can span several catalog sections; do not
+equate the whole category with `[item]` alone. Establish the complete section
+boundary first. Restore scoped auxiliary records by their actual product/item
+reference columns, preserving every unrelated record and its order. Compare
+all out-of-scope catalog token spans and all other file payloads with the target
+before publication. Reuse unchanged target records when their resolved content
+already matches the reference; an existing matching record does not prove
+client visibility, so do not create a duplicate to address a missing display.
+
+Report the number of records checked/restored separately from records that
+actually changed. Identify added products, changed fields and auxiliary rules;
+when the reported missing product already matched the reference, state that
+catalog restoration leaves its visibility issue unresolved until game validation.
+
+For listing-only migrations bounded by the original target, preserve target item
+definitions and resource references. Validate the reward graph that will actually
+run: the target's graph when no definitions are imported. Include
+`[package data selection]`, `[package data with usable period]`, booster selection,
+and `[RANDOMBOX]`; checking only fixed rewards misses nested random boxes.
+Compare the import graph to record content differences, but do not filter a
+target-supported product solely because an unchanged import definition references
+extra rewards that will not be copied. Validate import-only dependencies when
+their definitions are actually included in the authorized migration.
+
+Type 1 string offsets belong to one archive. When moving a complete catalog,
+relocate every string-bearing token into the target string table while retaining
+its token type and validating the resolved text. Do not copy source offsets raw.
+Keep the `-1` aggregate row in `[selectable character premium]`; it is not a
+positive purchasable product ID and must not receive an allocated replacement.
+
+When repairing duplicate positive product IDs, check auxiliary references before
+renumbering. A reference to an ambiguous original ID cannot identify which
+duplicate it intended. For filtered products, remove complete auxiliary records
+only after identifying the product-reference column; preserve unrelated integer
+fields and pre-existing non-product placeholders.
+
 1. Compare the target and import catalog sections, item registries, definitions,
    and any explicit price exceptions. Copy only the requested catalog scope.
 2. Classify missing registrations, missing definition files, and conflicting
@@ -129,7 +205,7 @@ pages with the actual client before calling the listing complete.
    the bottom in import registration order. Keep original pairs and their order;
    check ID and path collisions. In editable text, use one ID/path pair per line.
 5. A Type 1 binary PVF stores tokens rather than original text whitespace. The
-   current reader/writer normalizes displayed spaces/newlines: append order and
+   a compatible Type 1 reader/writer normalizes displayed spaces/newlines: append order and
    mappings survive, but one rendered line per pair cannot be guaranteed. Do not
    change the file data type just to force formatting; report this limitation.
 6. Reopen the result: compare record counts, added definitions, registry prefix and

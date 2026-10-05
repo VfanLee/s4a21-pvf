@@ -1,5 +1,12 @@
 # NPC 商店
 
+## 修改边界与回读
+
+- 登记链：NPC → `.npc` 商店角色 → 商店登记 → `.shp`；商品再查道具/装备登记。
+- 上架只改指定页签、分类和物品 ID；放置只改指定地图演员或坐标，核对共用地图。
+- 保留未授权的角色绑定、商店类型、其他列表与道具效果；价格、期限在道具文件。
+- 回读实际路径、商品顺序和引用；外观、页签与实际购买分别验收。
+
 ## NPC 位置与商店登记
 
 `itemshop/itemshop.lst` 只登记商店，不负责让 NPC 出现在地图中。
@@ -14,6 +21,7 @@ NPC 的商店角色、商店登记和 `.shp`。
 赛丽亚房间可能保留 `map/common/`、`map/town/common/` 两套地图及普通、PVP、活动版本，
 必须确认目标客户端实际加载哪一份，不能只靠文件名选文件；未出现在 `map.lst` 也不证明城镇地图无效。
 保留已有 NPC，实机核对位置、可行走范围、外观、交互及商店功能。
+仅水平移动时，减小 X 向左、增大 X 向右；保留 Y、朝向与末尾标志。
 
 对应 [`.agents/skills/npc-shop/SKILL.md`](../../.agents/skills/npc-shop/SKILL.md)。价格、效果见 [items.md](items.md)。
 点券商城的商品、售价与页面使用独立的 [cera-shop.md](cera-shop.md)。
@@ -24,19 +32,8 @@ NPC 的商店角色、商店登记和 `.shp`。
 
 下面示例是**成对闭合的结构骨架**。实机文件还有未列出字段，改时保留。
 
-## 目录结构
-
-```text
-<解包根>/
-├── npc/
-│   ├── npc.lst              # NPC ID → .npc
-│   └── Kanna.npc
-└── itemshop/
-    ├── itemshop.lst         # 商店 ID → .shp
-    ├── 84_Kanna.shp
-    ├── StackableShop2.shp   # 索西雅，多页签
-    └── 86_Mintai.shp        # 敏泰，职业分类
-```
+按 NPC ID 搜索位置可能同时命中普通、镜像、梦境及活动地图；与已登记 `.twn`
+区域引用核对。“几个身位”不是固定单位；保持原 Y 调整 X 后，实机检查间距。
 
 ## 文件说明
 
@@ -49,7 +46,7 @@ NPC 的商店角色、商店登记和 `.shp`。
 
 三种编号不要混，正向闭合见 [../structure.md](../structure.md)。
 
-例：卡妮娜 NPC ID `3`，`npc/Kanna.npc` 商店 ID `84`，文件 `itemshop/84_Kanna.shp`。`[NPC] 3` ≠ 商店 ID `84`。
+实际 NPC、商店和物品 ID 均从当次目标读取，不按文件名或示例编号套用。
 
 其他入口还可能是 `[product item]`、`[secret shop]`。秘密商店写在文件里，不等于游戏里一定能打开。
 
@@ -63,7 +60,7 @@ NPC 的商店角色、商店登记和 `.shp`。
 | `[type]` | 商店类型 | 沿用原值，如 `[etc shop]`、`[expert shop]`；不要换成未核对类型 |
 | `[sell info]` … `[/sell info]` | 售卖区 | 页签或商品都写在这里 |
 | `[tab]` … `[/tab]` | 一个页签 | 反引号文本是页签名；每个页签自己带 `[item list]` |
-| `[item list]` … `[/item list]` | 商品 ID 列表 | 只写 ID；空格 / Tab / 换行等效；禁止逗号；换行不会在游戏里分组 |
+| `[item list]` … `[/item list]` | 物品 ID 列表 | 只写 ID；空格 / Tab / 换行等效；禁止逗号；换行不会在游戏里分组 |
 | `[use category]` | 商店级分类开关 | 如 `basic job`；每个页签仍可自选分类列表或普通列表 |
 | `[category entry]` … `[/category entry]` | 一个职业/分类块 | 内含 `[id]`（分类编号，不是商店 ID 或物品 ID）和 `[item list]` |
 | `[message]` | 商店对话 | 反引号字符串 |
@@ -72,77 +69,41 @@ NPC 的商店角色、商店登记和 `.shp`。
 
 负数（`-1` `-2`）不是商品 ID。商品 ID 要按上下文走 `stackable.lst` 或 `equipment.lst`，不能从位数猜类型。
 
-## 完整示例
+## 结构速查
 
 ### 外层骨架
 
-```text
-[NPC]
-	3
-[type]
-	`[etc shop]`
-[sell info]
-	[tab]
-		`消耗品`
-		[item list]
-			1150 1151 1153
-		[/item list]
-	[/tab]
-[/sell info]
-[message]
-	`商店对话`
-```
+自定义 NPC 不显示时，分开检查地图放置与登记、显示资源、商店解析。
+含 `[field animation]`、`[role]`、`[dialog]` 等 NPC 字段，却没有商店售卖定义的
+`.shp` 不是正确商店模板；仅改扩展名不会把 NPC 定义转换成商店。
+把 `.npc` 移到子目录时，需核对动画依赖及客户端解析路径的基准目录；
+诊断可先沿用已正常工作的目录布局。不能仅因商店数据错误就认定它导致 NPC 不显示。
+人物不可见但能打开带名字的交互菜单，说明 NPC 已生成；应优先检查
+`[field animation]` → `.ani` → `[IMAGE]` 的显示链，不必先换 ID 或坐标。
+菜单中有商店选项，不证明商店能打开或购买成功。对比动画时同时检查解析后的内容和
+引用路径；两份 `.ani` 相同，也不证明移目录后能找到动画或客户端 NPK 包含所需图像。
+复用外观时，将 `[small face]`、`[big face]`、`[popup face]`、`[field animation]`
+写在自定义 `.npc`；环境与对话语音字段也属于 `.npc`。自定义名称和商店绑定独立保留，
+仅复用外观不需要复制整套对话与好感度记录。
 
-### 多页签
-
-每个 `[tab]` 同级。不要把第二个 `[item list]` 写进第一个页签。`[item list]` 顺序即显示顺序。
-
-下列为结构片段，不是完整商店。
+页签内的最小示意（占位符不可直接导入）：
 
 ```text
-[sell info]
-	[tab]
-		`消耗品`
-		[item list]
-			1150 1151 1153
-		[/item list]
-	[/tab]
-	[tab]
-		`其它`
-		[item list]
-			10099377
-		[/item list]
-	[/tab]
-[/sell info]
+[tab]
+    `<页签名>`
+    [item list]
+        <物品ID> <物品ID>
+    [/item list]
+[/tab]
 ```
 
-### 职业分类 + 页签混用
-
-A21 `basic job` 编号包括 `0,1,5,3,4,2,6,7,8,11,10,9,12,13`，保留分类编号。
-不要把 `basic job` 的编号套到 `job` / `expert job` / `pvp job`。
-
-```text
-[sell info]
-	[use category]
-		`basic job`
-	[tab]
-		`神器`
-		[category entry]
-			[id]
-				0
-			[item list]
-				101000282 101030306
-			[/item list]
-		[/category entry]
-	[/tab]
-	[tab]
-		`消耗品`
-		[item list]
-			10088618
-		[/item list]
-	[/tab]
-[/sell info]
-```
+| 结构 | 核对规则 |
+| --- | --- |
+| 外层 | `[NPC]` 回指、原 `[type]`、`[sell info]` 及其闭合；不要复制 NPC 定义字段 |
+| 多页签 | 各 `[tab]` 同级，每个页签独立 `[item list]`；列表顺序为展示顺序 |
+| 职业分类 | `[use category]` 为商店级；分类页签使用 `[category entry]`，包含 `[id]` 及其列表 |
+| 分类与普通列表混用 | 同一商店不同页签可以采用不同列表结构，不嵌套第二个列表 |
+| `basic job` | 编号 `0,1,5,3,4,2,6,7,8,11,10,9,12,13`；不能套到 `job`、`expert job`、`pvp job` |
 
 ### 无页签 / 每日轮换
 
@@ -150,7 +111,8 @@ A21 `basic job` 编号包括 `0,1,5,3,4,2,6,7,8,11,10,9,12,13`，保留分类编
 - `AbelroExpert.shp`（`[expert shop]`）：`[sell info]` 下直接 `[category entry]`，并带 `[use toggle]` / `[expert job level]`。
 - `OneADayItemShop.shp`：普通 `[item list]` 可为空，轮换写在 `[one a day start time]` / `[one a day item]`。
 
-当前 `ItemShopFile` **不会**从无页签结构提取商品，也不递归 `[category entry]`。GM 工具索引对不上时，以客户端为准。改造时沿用该 NPC 已有结构。
+参考 `PvfLib.ItemShopFile` 不提取无页签商品，也不递归 `[category entry]`，属于工具索引限制。
+不能据此认定实际商店无效；沿用目标结构，界面和购买分别检查。客户端/服务端交易冲突先调查。
 
 ## 改哪里
 

@@ -1,10 +1,44 @@
 # S4A21 PVF
 
-This repo is an agent skill pack for **86JP S4A21** PVF. It is not the unpacked script tree.
+This repo is an agent skill pack for **S4A21 次元彼端** PVF. It is not the unpacked script tree.
+
+Its purpose is repeatable S4A21 PVF inspection and editing by different agents,
+with matching Chinese field references for manual maintenance. Scope is the 次元彼端 S4A21
+PVF format and the ServerS4A21 implementation documented by these skills.
+Changing computers, checkout locations or compatible PVF tools does not change
+the documented field meanings. A different server implementation/build requires
+checking the affected runtime rules, not assuming all A21-labelled servers agree.
 
 This file is the project map: structure, ID relationships, hard rules, and which scenario skill to load. Scenario how-to lives in `.agents/skills/<name>/SKILL.md` — there is no hub `skills/SKILL.md`.
 
+Write `AGENTS.md` and all `.agents/skills/` instructions in English for AI agents.
+Write the root `README.md` and `docs/` in Simplified Chinese for PVF developers.
+Preserve literal project names, file paths, PVF tags and required output labels;
+keep the English instructions and Chinese field references semantically aligned.
+
 Reply to the user in Simplified Chinese.
+
+## Targets and reference-only projects
+
+- Use the PVF or unpacked tree explicitly supplied/designated for the active task;
+  do not silently choose another local pack as a target or baseline.
+- Without a designated PVF/tree, answer only from recorded skills, identifying
+  the answer as documented rules rather than a check of actual target data.
+  If the knowledge is missing, say it is uncertain and no reliable answer can
+  be provided. Do not infer IDs, values, schemas or gameplay effects.
+- `ServerS4A21` (server), `S4A21ClientPatch` (client patch) and `S4A21GmTool`
+  (GM) are read-only references. Trace them when needed to explain a PVF field
+  or diagnose a conflict; do not change their code or configuration. Database
+  changes are human-only: agents may explain reference code and provide manual
+  repair examples, but never mutate data or execute repair scripts for the user.
+  Server-only fixes are reported for the user to implement, not included in a
+  PVF edit. Their absence is not permission to invent undocumented behavior.
+- `custom-pvf` is user-maintained learning/import/share material. Read only
+  when relevant; never write, reorganize, rename, delete or automatically apply
+  its contents. A PVF edit request does not override this boundary.
+- When recorded knowledge conflicts with target content or consumer behavior,
+  investigate and explain the affected rule and impact. Confirm a changed edit
+  proposal with the user before proceeding; do not silently repair unrelated data.
 
 ## Maintainer docs
 
@@ -63,7 +97,7 @@ itemshop/itemshop.lst  → shop ID → itemshop/*.shp
 .shp [NPC]  → NPC ID (back-pointer only; not a substitute for the forward close)
 ```
 
-Example: 卡妮娜 NPC ID `3`, shop ID `84`, file `itemshop/84_Kanna.shp`. `[NPC] 3` is not shop ID `84`.
+Always keep the NPC ID, its role-linked shop ID and each listed item ID separate.
 
 ## Layering
 
@@ -74,7 +108,15 @@ Example: 卡妮娜 NPC ID `3`, shop ID `84`, file `itemshop/84_Kanna.shp`. `[NPC
 
 ## Runtime meaning
 
-Runtime rules in these skills apply to this project's A21 client/server. Preserve that scope when interpreting prices, expiry, package grants, CERA purchases, and gold drops.
+Runtime rules in these skills apply to the documented S4A21 client/ServerS4A21
+implementation, independently of the host computer. Reference-code behavior
+is distinct from PVF syntax and actual target values. Preserve this scope
+when interpreting prices, expiry, package grants, CERA purchases and gold drops.
+Internal PVF paths are lookup rules; absolute host paths and available tools
+must come from the user's target and the execution environment. A new machine
+does not require the old checkout, source tree or past attachments to apply
+already documented rules. Target values and registrations must still be read
+from the supplied archive; do not reuse a previous archive's contents.
 
 Icon / resource paths in Script.pvf do not prove the client NPK exists.
 
@@ -84,6 +126,7 @@ For edit workflow and hard rules, read [`.agents/skills/SKILL.md`](.agents/skill
 
 | Task | Domain skill |
 | --- | --- |
+| Script-path lookup, character/skill-tree registries and configuration entry points | [script navigation](.agents/skills/references/script-navigation.md) |
 | NPC placement in towns/Seria room; `.shp` listings, tabs, categories | [npc-shop](.agents/skills/npc-shop/SKILL.md) |
 | CERA cash-shop products, prices, pages, contracts, catalog migration | [cera-shop](.agents/skills/cera-shop/SKILL.md) |
 | Item definitions, package/quest rewards, expiry, bind, use effects | [items](.agents/skills/items/SKILL.md) |
