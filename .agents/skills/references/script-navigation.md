@@ -74,3 +74,15 @@ cannot establish that a retained file is consumed.
   a correctly named `.shp` or its `[NPC]` back-pointer is insufficient alone.
 - Drop-dictionary display data, drop registries and actual generation tables
   are different layers; use item-drop for the active drop source.
+# Account honor progression (reference ServerS4A21)
+
+`etc/honorlevel.etc` defines honor-grade visual resources and level experience
+thresholds. `HonorLevelDataProvider` resolves account honor level/grade from
+accumulated honor experience; experience earned at maximum character level
+contributes to honor. Keep honor separate from adventure-group manage level
+and growth capsules. The reference honor path calculates and synchronizes
+progress/display; no honor-level combat-stat or drop-rate bonus is established.
+Growth-capsule experience accrues alongside honor through its own provider,
+not as a reward for an honor-level increase. Resource references alone do not
+verify the client has or renders the effects.
+

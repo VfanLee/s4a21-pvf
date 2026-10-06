@@ -1,0 +1,54 @@
+#PVF_File
+
+[name]
+	`异界气息净化书`
+
+[explain]
+	`用于被异界气息污染的装备， 使用时装备可以穿戴。
+    异界气息被净化时， 可以对装备赋予1种异次元属性 (异次元力量、 智力、 体力、 精神)。
+    赋予异次元属性后， 只能进行增幅。
+    只有被异界气息污染， 并且不低于Lv55的稀有及以上装备才可使用； 无法用于已经净化过的装备。
+    可以通过在克伦特处购买设计图制作该道具。`
+
+[grade]
+	1
+
+[rarity]
+	2
+
+[usable job]
+	`[all]`
+[/usable job]
+
+[attach type]
+	`[free]`
+
+[minimum level]
+	1
+
+[weight]
+	10
+
+[cool time]
+	1000
+
+[price]
+	500000
+
+[icon]
+	`Item/stackable/consumption.img`	317
+
+[field image]
+	`Item/FieldImage.img`	24
+
+[stackable type]
+	`[etc]`	0
+
+[item group name]
+	`potion`
+
+[move wav]
+	`BOOK_TOUCH`
+
+[stack limit]
+	1000

@@ -65,6 +65,33 @@ Quest/dungeon pairing and level-based mission rewards do not prove monster
 levels follow quest level. Verify the actual deployment before claiming
 character-level or quest-level scaling or revision-table formulas.
 
+## Blood-altar monster levels (reference ServerS4A21)
+
+`.dgn` `[champion]` is an indexed base parameter for ordinary champion
+promotion, not monster level or HP/attack multipliers. Reference
+`Dungeon.GetChampionCount` selects by difficulty index, applies integer
+multipliers 1.5/2.5/5 for indices 1/2/3 (otherwise unchanged), then compares
+`100 * adjusted / (mazeWidth * mazeHeight)` to `Next(100)` and returns 0 or 1.
+Do not describe raw entries as direct per-monster percentages. The dedicated
+blood-altar wave generator assigns normal/boss types itself and does not use
+this parameter for its scheduled waves; increasing it is not a verified altar
+difficulty adjustment.
+
+Endless blood-altar schedules use difficulty 0 and do not randomly select the
+five `[champion]` columns. Ultimate altar is separate: its schedule can use
+phase difficulty 1/2; the coordinator's selection timeout randomly resolves
+1 or 2. Do not transfer that timeout behavior to endless altar entry.
+
+For registered `[blood dungeon]` modes, close `.dgn` -> map registry ->
+`.map` `[blood monster]` / `[blood phase time]` (endless) or ultimate sections.
+The blood-altar definition copies `.dgn` `[basis level]`, and scheduled waves
+use that value directly for every spawned actor's level; ordinary MAP Lv/AutoLv
+rules are not this branch. Raise the designated DGN basis level for a fixed
+level change; keep entry minimum, rounds, waves and rewards unchanged unless
+separately requested. The loader requires basis level 1..255. Level projection
+does not verify combat-stat multipliers or `[revision table]` effects; test
+actual client combat separately rather than claiming a specific HP increase.
+
 ## Story-mode configuration
 
 In the documented S4A21 次元彼端 runtime, story dungeons in **simple mode**

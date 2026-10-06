@@ -1,0 +1,71 @@
+#PVF_File
+
+[grade]
+	`[daily random]`
+
+[ignore quest level 4 exp]
+	1
+
+[difficulty]
+	`D`
+
+[gold multiple]
+	200
+
+[npc index]
+	132
+
+[complete npc index]
+	-1
+
+[job]
+	`[all]`
+
+[grow type]
+	-1
+
+[level]
+	85	99
+
+[pre required quest]
+	12855
+[/pre required quest]
+
+[dungeon info]
+	1500	-1
+	5041	-1
+[/dungeon info]
+
+[type]
+	`[clear a dungeon]`
+
+[sub type]
+	6
+
+[int data]
+	1500	-1	5041	-1
+[/int data]
+
+[reward type]
+	`[item]`
+
+[reward int data]
+	10099671	100
+[/reward int data]
+
+[reward selection int data]
+	
+[/reward selection int data]
+
+[name]
+	`远古 - 黑暗净化`
+
+[depend message]
+	`你感受到了吗？ 远古地区的黑暗气息越来越重， 正在逐渐向我们这个方向蔓延。 一旦这些气息侵入到阿拉德内部， 后果不堪设想。
+身负使命的人啊， 希望你能前去净化那些气息， 为这里的居民带来永久的安宁。`
+
+[condition message]
+	`    通关远古遗迹的『比尔马克帝国试验场』。 (此任务每日只能完成1次， 凌晨6时任务条件会发生变化， 但已接取的任务条件不会改变)`
+
+[solve message]
+	`谢谢你及时净化了部分黑暗气息……但是只要气息没有完全消失， 隐患依旧存在……`

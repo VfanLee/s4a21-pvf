@@ -1,0 +1,52 @@
+#PVF_File
+
+[name]
+	`变异的扭转书`
+
+[explain]
+	`只能用于被净化了异界气息的装备。 使用后可以选择变更异次元力量、 智力、 体力， 及精神中的1种。
+    只有Lv55以上的稀有及以上的装备才可使用； 不可用于强化后的装备。
+    可以通过在克伦特处购买设计图制作该道具。`
+
+[grade]
+	1
+
+[rarity]
+	2
+
+[usable job]
+	`[all]`
+[/usable job]
+
+[attach type]
+	`[free]`
+
+[minimum level]
+	1
+
+[weight]
+	10
+
+[cool time]
+	1000
+
+[price]
+	1500000
+
+[icon]
+	`Item/stackable/consumption.img`	325
+
+[field image]
+	`Item/FieldImage.img`	24
+
+[stackable type]
+	`[etc]`	0
+
+[item group name]
+	`potion`
+
+[move wav]
+	`JEWEL_TOUCH`
+
+[stack limit]
+	1000

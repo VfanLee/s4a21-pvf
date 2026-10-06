@@ -1,0 +1,1152 @@
+#PVF_File
+
+[name]
+	`梦想白金徽章礼盒`
+
+[explain]
+	`开启后， 可以从包括守护者在内的所有职业和技能的白金徽章中选择获得1个。 该道具以角色为单位只能交易1次。`
+
+[grade]
+	1
+
+[rarity]
+	2
+
+[usable job]
+	`[all]`
+[/usable job]
+
+[attach type]
+	`[trade limit]`
+
+[minimum level]
+	1
+
+[price]
+	10000000
+
+[icon]
+	`Item/stackable/cash.img`	1244
+
+[stackable type]
+	`[booster selection]`	0
+
+[stack limit]
+	1
+
+[move wav]
+	`BONE_TOUCH`
+
+[impossible contents]
+	`gift`
+[/impossible contents]
+
+[booster category num]
+	2	11	5
+
+[booster selection num]
+	1
+
+[booster select category]
+	0	0	
+	[stackable]
+		2540007	1
+		2540008	1
+		2540009	1
+		2540010	1
+		10095127	1
+		10095128	1
+		10095130	1
+		10095131	1
+		10095135	1
+		10095136	1
+		10095137	1
+		10095138	1
+		10095140	1
+		10095141	1
+		10095175	1
+		10095176	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	0	1	
+	[stackable]
+		2540011	1
+		2540012	1
+		2540013	1
+		2540014	1
+		2540015	1
+		2540016	1
+		10095143	1
+		10095145	1
+		10095150	1
+		10095151	1
+		10095152	1
+		10095179	1
+		10095180	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	0	2	
+	[stackable]
+		2540017	1
+		2540018	1
+		2540019	1
+		2540020	1
+		2540134	1
+		10095153	1
+		10095155	1
+		10095156	1
+		10095157	1
+		10095162	1
+		10095181	1
+		10095182	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	0	3	
+	[stackable]
+		2540021	1
+		2540022	1
+		2540023	1
+		2540135	1
+		10095163	1
+		10095164	1
+		10095166	1
+		10095167	1
+		10095168	1
+		10095169	1
+		10095173	1
+		10095174	1
+		10095177	1
+		10095178	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	0	4	
+	[stackable]
+		2540149	1
+		2540150	1
+		2540151	1
+		2540152	1
+		10095540	1
+		10095541	1
+		10095542	1
+		10095543	1
+		10095544	1
+		10095545	1
+		10095546	1
+		10095547	1
+		10095548	1
+		10095549	1
+		10095550	1
+		10095551	1
+		10095553	1
+		10095554	1
+		10095555	1
+		10095556	1
+		10095557	1
+		10095558	1
+		10095559	1
+		10095560	1
+		10095561	1
+		10095562	1
+		10095563	1
+		10095564	1
+		10095565	1
+		10095566	1
+		10095567	1
+		10095580	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	1	0	
+	[stackable]
+		2540028	1
+		10095066	1
+		10095067	1
+		10095068	1
+		10095069	1
+		10095070	1
+		10095071	1
+		10095072	1
+		10095073	1
+		10095074	1
+		10095117	1
+		10095118	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	1	1	
+	[stackable]
+		2540030	1
+		2540136	1
+		2540137	1
+		10095078	1
+		10095079	1
+		10095081	1
+		10095082	1
+		10095083	1
+		10095084	1
+		10095087	1
+		10095089	1
+		10095119	1
+		10095120	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	1	2	
+	[stackable]
+		2540031	1
+		2540033	1
+		2540138	1
+		10095090	1
+		10095091	1
+		10095092	1
+		10095093	1
+		10095094	1
+		10095096	1
+		10095097	1
+		10095098	1
+		10095101	1
+		10095102	1
+		10095115	1
+		10095116	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	1	3	
+	[stackable]
+		2540034	1
+		2540035	1
+		10095076	1
+		10095104	1
+		10095105	1
+		10095106	1
+		10095107	1
+		10095108	1
+		10095109	1
+		10095110	1
+		10095113	1
+		10095114	1
+		10095121	1
+		10095122	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	1	4	
+	[stackable]
+		
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	2	0	
+	[stackable]
+		2540039	1
+		10094876	1
+		10094878	1
+		10094879	1
+		10094880	1
+		10094882	1
+		10094883	1
+		10094884	1
+		10094885	1
+		10094886	1
+		10094888	1
+		10094927	1
+		10094928	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	2	1	
+	[stackable]
+		2540142	1
+		10094889	1
+		10094890	1
+		10094891	1
+		10094892	1
+		10094893	1
+		10094894	1
+		10094895	1
+		10094896	1
+		10094898	1
+		10094931	1
+		10094932	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	2	2	
+	[stackable]
+		2540048	1
+		10094913	1
+		10094914	1
+		10094915	1
+		10094916	1
+		10094918	1
+		10094919	1
+		10094920	1
+		10094921	1
+		10094922	1
+		10094923	1
+		10094924	1
+		10094925	1
+		10094926	1
+		10094933	1
+		10094934	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	2	3	
+	[stackable]
+		2540043	1
+		10094901	1
+		10094902	1
+		10094903	1
+		10094904	1
+		10094905	1
+		10094906	1
+		10094908	1
+		10094909	1
+		10094910	1
+		10094911	1
+		10094912	1
+		10094929	1
+		10094930	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	2	4	
+	[stackable]
+		
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	3	0	
+	[stackable]
+		2540051	1
+		2540052	1
+		2540053	1
+		2540054	1
+		10095362	1
+		10095364	1
+		10095366	1
+		10095367	1
+		10095370	1
+		10095371	1
+		10095372	1
+		10095373	1
+		10095374	1
+		10095375	1
+		10095441	1
+		10095442	1
+		10095665	1
+		10095666	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	3	1	
+	[stackable]
+		2540058	1
+		2540059	1
+		2540060	1
+		2540061	1
+		10095400	1
+		10095401	1
+		10095406	1
+		10095407	1
+		10095408	1
+		10095409	1
+		10095410	1
+		10095411	1
+		10095412	1
+		10095413	1
+		10095414	1
+		10095415	1
+		10095439	1
+		10095440	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	3	2	
+	[stackable]
+		2540055	1
+		2540056	1
+		2540057	1
+		10095376	1
+		10095377	1
+		10095378	1
+		10095379	1
+		10095380	1
+		10095381	1
+		10095382	1
+		10095386	1
+		10095387	1
+		10095388	1
+		10095389	1
+		10095390	1
+		10095391	1
+		10095392	1
+		10095393	1
+		10095394	1
+		10095395	1
+		10095396	1
+		10095397	1
+		10095398	1
+		10095434	1
+		10095435	1
+		10095436	1
+		10095437	1
+		10095438	1
+		10095579	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	3	3	
+	[stackable]
+		2540062	1
+		2540063	1
+		2540064	1
+		2540065	1
+		2540066	1
+		2540067	1
+		2540068	1
+		10095416	1
+		10095417	1
+		10095418	1
+		10095419	1
+		10095420	1
+		10095423	1
+		10095429	1
+		10095430	1
+		10095431	1
+		10095432	1
+		10095433	1
+		10095443	1
+		10095444	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	3	4	
+	[stackable]
+		2540154	1
+		2540155	1
+		10095568	1
+		10095569	1
+		10095570	1
+		10095571	1
+		10095572	1
+		10095573	1
+		10095574	1
+		10095575	1
+		10095576	1
+		10095577	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	4	0	
+	[stackable]
+		2540070	1
+		2540071	1
+		2540072	1
+		2540073	1
+		2540074	1
+		2540144	1
+		2540145	1
+		10095449	1
+		10095450	1
+		10095452	1
+		10095453	1
+		10095455	1
+		10095457	1
+		10095459	1
+		10095460	1
+		10095463	1
+		10095465	1
+		10095466	1
+		10095467	1
+		10095522	1
+		10095523	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	4	1	
+	[stackable]
+		2540075	1
+		2540076	1
+		2540077	1
+		2540146	1
+		10095469	1
+		10095470	1
+		10095471	1
+		10095472	1
+		10095475	1
+		10095476	1
+		10095477	1
+		10095479	1
+		10095480	1
+		10095481	1
+		10095482	1
+		10095483	1
+		10095484	1
+		10095517	1
+		10095518	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	4	2	
+	[stackable]
+		2540078	1
+		2540079	1
+		2540080	1
+		2540081	1
+		2540082	1
+		2540147	1
+		10095486	1
+		10095487	1
+		10095489	1
+		10095490	1
+		10095491	1
+		10095493	1
+		10095495	1
+		10095496	1
+		10095498	1
+		10095500	1
+		10095501	1
+		10095502	1
+		10095504	1
+		10095521	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	4	3	
+	[stackable]
+		2540132	1
+		2540133	1
+		10095505	1
+		10095506	1
+		10095507	1
+		10095509	1
+		10095510	1
+		10095512	1
+		10095513	1
+		10095514	1
+		10095515	1
+		10095516	1
+		10095519	1
+		10095520	1
+		10098306	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	4	4	
+	[stackable]
+		
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	5	0	
+	[stackable]
+		2540085	1
+		10094939	1
+		10094941	1
+		10094942	1
+		10094943	1
+		10094945	1
+		10094946	1
+		10094947	1
+		10094948	1
+		10094949	1
+		10094950	1
+		10094995	1
+		10094996	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	5	1	
+	[stackable]
+		2540143	1
+		10094952	1
+		10094953	1
+		10094954	1
+		10094955	1
+		10094956	1
+		10094957	1
+		10094958	1
+		10094959	1
+		10094961	1
+		10094997	1
+		10094998	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	5	2	
+	[stackable]
+		2540094	1
+		10094976	1
+		10094977	1
+		10094978	1
+		10094979	1
+		10094981	1
+		10094982	1
+		10094983	1
+		10094984	1
+		10094985	1
+		10094986	1
+		10094987	1
+		10094989	1
+		10094990	1
+		10094993	1
+		10094994	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	5	3	
+	[stackable]
+		2540089	1
+		10094964	1
+		10094965	1
+		10094966	1
+		10094967	1
+		10094968	1
+		10094969	1
+		10094971	1
+		10094972	1
+		10094973	1
+		10094974	1
+		10094975	1
+		10094991	1
+		10094992	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	5	4	
+	[stackable]
+		
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	6	0	
+	[stackable]
+		2540110	1
+		2540111	1
+		2540112	1
+		2540113	1
+		10095300	1
+		10095301	1
+		10095302	1
+		10095303	1
+		10095306	1
+		10095309	1
+		10095310	1
+		10095311	1
+		10095312	1
+		10095313	1
+		10095314	1
+		10095329	1
+		10095330	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	6	1	
+	[stackable]
+		2540114	1
+		2540115	1
+		2540116	1
+		2540117	1
+		10095315	1
+		10095316	1
+		10095320	1
+		10095321	1
+		10095322	1
+		10095323	1
+		10095324	1
+		10095325	1
+		10095327	1
+		10095328	1
+		10148226	1
+		10148224	1
+		10148225	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	6	2	
+	[stackable]
+		10096062	1
+		10096063	1
+		10096064	1
+		10096065	1
+		10096066	1
+		10096067	1
+		10096068	1
+		10096069	1
+		10096070	1
+		10096071	1
+		10096072	1
+		10096073	1
+		10096074	1
+		10097050	1
+		10097051	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	6	3	
+	[stackable]
+		10146859	1
+		10146860	1
+		10146861	1
+		10146862	1
+		10146863	1
+		10146864	1
+		10146865	1
+		10146866	1
+		10146867	1
+		10146868	1
+		10146870	1
+		10146871	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	6	4	
+	[stackable]
+		
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	7	0	
+	[stackable]
+		2540123	1
+		10095003	1
+		10095004	1
+		10095006	1
+		10095007	1
+		10095008	1
+		10095009	1
+		10095010	1
+		10095011	1
+		10095013	1
+		10095014	1
+		10095015	1
+		10095054	1
+		10095055	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	7	1	
+	[stackable]
+		10095021	1
+		10095022	1
+		10095024	1
+		10095023	1
+		10095027	1
+		10095018	1
+		10095020	1
+		10095056	1
+		10095057	1
+		10095017	1
+		2540140	1
+		2540125	1
+		10095026	1
+		10149240	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	7	2	
+	[stackable]
+		2540126	1
+		2540128	1
+		10095029	1
+		10095030	1
+		10095031	1
+		10095032	1
+		10095033	1
+		10095035	1
+		10095036	1
+		10095037	1
+		10095039	1
+		10095040	1
+		10095041	1
+		10095060	1
+		10095061	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	7	3	
+	[stackable]
+		2540129	1
+		2540130	1
+		10095043	1
+		10095044	1
+		10095045	1
+		10095046	1
+		10095047	1
+		10095048	1
+		10095049	1
+		10095052	1
+		10095053	1
+		10095058	1
+		10095059	1
+		10148600	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	7	4	
+	[stackable]
+		
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	7	4	
+	[stackable]
+		
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	8	0	
+	[stackable]
+		2540159	1
+		2540160	1
+		2540161	1
+		10095333	1
+		10095334	1
+		10095335	1
+		10095336	1
+		10095337	1
+		10095338	1
+		10095339	1
+		10095340	1
+		10095342	1
+		10095356	1
+		10095357	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	8	1	
+	[stackable]
+		2540162	1
+		2540163	1
+		2540164	1
+		10095345	1
+		10095346	1
+		10095349	1
+		10095350	1
+		10095351	1
+		10095352	1
+		10095353	1
+		10095355	1
+		10095358	1
+		10095359	1
+		10150791	1
+		10150792	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	8	2	
+	[stackable]
+		
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	8	3	
+	[stackable]
+		
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	8	4	
+	[stackable]
+		
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	9	0	
+	[stackable]
+		10001269	1
+		10001270	1
+		10001271	1
+		10001272	1
+		10001277	1
+		10095187	1
+		10095189	1
+		10095190	1
+		10095191	1
+		10095192	1
+		10095196	1
+		10095197	1
+		10095199	1
+		10095200	1
+		10095201	1
+		10095202	1
+		10095203	1
+		10095204	1
+		10095247	1
+		10095248	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	9	1	
+	[stackable]
+		10001273	1
+		10001274	1
+		10001275	1
+		10001276	1
+		10001278	1
+		10095217	1
+		10095220	1
+		10095222	1
+		10095223	1
+		10095224	1
+		10095225	1
+		10095226	1
+		10095243	1
+		10095244	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	9	2	
+	[stackable]
+		10088976	1
+		10088977	1
+		10088978	1
+		10095206	1
+		10095207	1
+		10095208	1
+		10095209	1
+		10095210	1
+		10095211	1
+		10095215	1
+		10095216	1
+		10095249	1
+		10095250	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	9	3	
+	[stackable]
+		10088979	1
+		10088980	1
+		10088981	1
+		10088982	1
+		10095229	1
+		10095230	1
+		10095231	1
+		10095232	1
+		10095233	1
+		10095234	1
+		10095235	1
+		10095236	1
+		10095237	1
+		10095239	1
+		10095245	1
+		10095246	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	9	4	
+	[stackable]
+		
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	10	0	
+	[stackable]
+		10092546	1
+		10092547	1
+		10092548	1
+		10092549	1
+		10092550	1
+		10095255	1
+		10095256	1
+		10095258	1
+		10095259	1
+		10095260	1
+		10095261	1
+		10095264	1
+		10095266	1
+		10095267	1
+		10095268	1
+		10095269	1
+		10095270	1
+		10095296	1
+		10095297	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	10	1	
+	[stackable]
+		10093684	1
+		10093685	1
+		10093686	1
+		10093687	1
+		10093688	1
+		10093689	1
+		10095273	1
+		10095274	1
+		10095275	1
+		10095276	1
+		10095277	1
+		10095278	1
+		10095279	1
+		10095280	1
+		10095284	1
+		10095286	1
+		10095287	1
+		10095289	1
+		10095290	1
+		10095291	1
+		10095293	1
+		10095294	1
+		10095295	1
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	10	2	
+	[stackable]
+		
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	10	3	
+	[stackable]
+		
+	[/stackable]
+[/booster select category]
+
+[booster select category]
+	10	4	
+	[stackable]
+		
+	[/stackable]
+[/booster select category]
+
+[booster category name]
+	`请选择职业`
+	`鬼剑士/黑暗武士`
+	`格斗家(女)`
+	`神枪手(男)`
+	`魔法师(女)/缔造者`
+	`圣职者`
+	`神枪手(女)`
+	`暗夜使者`
+	`格斗家(男)`
+	`魔法师(男)`
+	`鬼剑士(女)`
+	`守护者`
+	`请选择转职`
+	`剑魂`
+	`鬼泣`
+	`狂战士`
+	`阿修罗`
+	`黑暗武士`
+	`气功师`
+	`散打`
+	`街霸`
+	`柔道家`
+	`柔道家`
+	`漫游枪手`
+	`枪炮师`
+	`弹药专家`
+	`机械师`
+	`机械师`
+	`元素师`
+	`战斗法师`
+	`召唤师`
+	`魔道学者`
+	`缔造者`
+	`圣骑士`
+	`蓝拳圣使`
+	`驱魔师`
+	`复仇者`
+	`复仇者`
+	`漫游枪手`
+	`枪炮师`
+	`弹药专家`
+	`机械师`
+	`机械师`
+	`刺客`
+	`死灵术士`
+	`忍者`
+	`影舞者`
+	`忍者`
+	`气功师`
+	`散打`
+	`街霸`
+	`柔道家`
+	`柔道家`
+	`元素爆破师`
+	`冰结师`
+	`冰结师`
+	`冰结师`
+	`冰结师`
+	`驭剑士`
+	`契魔者`
+	`暗殿骑士`
+	`流浪武士`
+	`流浪武士`
+	`精灵骑士`
+	`混沌魔灵`
+	`混沌魔灵`
+	`混沌魔灵`
+	`混沌魔灵`
+[/booster category name]
+
+[trade limit max]
+	1
+
+[action usable place]
+	`[seria room]`
+	`[village]`
+[/action usable place]

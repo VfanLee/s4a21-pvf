@@ -1,0 +1,46 @@
+#PVF_File
+
+[name]
+	`时空之门深渊派对任务完成券`
+
+[explain]
+	`使用后， 可以自动完成时空之门深渊派对任务。`
+
+[attach type]
+	`[account]`
+
+[grade]
+	1
+
+[rarity]
+	2
+
+[usable job]
+	`[all]`
+[/usable job]
+
+[minimum level]
+	1
+
+[stack limit]
+	1000
+
+[price]
+	1000000
+
+[icon]
+	`Item/stackable/consumption_cn.img`	1049
+
+[stackable type]
+	`[etc]`	0
+
+[move wav]
+	`IRON_TOUCH`
+
+[action type]
+	`[any quest clear]`	4391
+[/action type]
+
+[impossible contents]
+	`gift`
+[/impossible contents]

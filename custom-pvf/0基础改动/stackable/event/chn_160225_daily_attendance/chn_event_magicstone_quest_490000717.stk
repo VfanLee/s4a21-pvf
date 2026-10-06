@@ -1,0 +1,62 @@
+#PVF_File
+
+[name]
+	`魔法石任务完成券`
+
+[explain]
+	`使用后， 可以自动完成魔法石任务。`
+
+[attach type]
+	`[account]`
+
+[grade]
+	1
+
+[rarity]
+	2
+
+[usable job]
+	`[swordman]`
+	`[at swordman]`
+	`[demonic swordman]`
+	`[at fighter]`
+	`[at mage]`
+	`[mage]`
+	`[fighter]`
+	`[gunner]`
+	`[at gunner]`
+	`[knight]`
+	`[priest]`
+	`[creator mage]`
+	`[thief]`
+[/usable job]
+
+[minimum level]
+	1
+
+[stack limit]
+	1000
+
+[price]
+	1000000
+
+[icon]
+	`Item/stackable/consumption_cn.img`	1049
+
+[icon mark]
+	`item/IconMark.img`	136
+
+[stackable type]
+	`[etc]`	0
+
+[move wav]
+	`IRON_TOUCH`
+
+[action type]
+	`[any quest clear]`	675	650
+[/action type]
+
+[impossible contents]
+	`gift`
+	`hardcore mode`
+[/impossible contents]

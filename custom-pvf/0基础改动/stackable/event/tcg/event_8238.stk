@@ -1,0 +1,56 @@
+#PVF_File
+
+[name]
+	`纯净的黄金增幅书`
+
+[explain]
+	`使用后， 可以定向扭转装备的异次元属性 (无法选择与之前相同的属性)， 并随机增幅到+3~+6之间， 但会覆盖该装备原有的强化等级。 未净化的装备无法使用该道具。 (只有Lv55以上的稀有及以上的装备， 才能使用此增幅书！)`
+
+[grade]
+	1
+
+[rarity]
+	3
+
+[usable job]
+	`[all]`
+[/usable job]
+
+[attach type]
+	`[free]`
+
+[minimum level]
+	1
+
+[weight]
+	10
+
+[price]
+	6000000
+
+[icon]
+	`Item/stackable/consumption.img`	821
+
+[field image]
+	`Item/FieldImage.img`	24
+
+[stackable type]
+	`[etc]`	0
+
+[item group name]
+	`potion`
+
+[move wav]
+	`JEWEL_TOUCH`
+
+[stack limit]
+	1000
+
+[amplification random value]
+	3	50	4	30	5	15	6	5
+[/amplification random value]
+
+[action usable place]
+	`[village]`
+	`[seria room]`
+[/action usable place]

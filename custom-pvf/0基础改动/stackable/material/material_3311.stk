@@ -1,0 +1,42 @@
+#PVF_File
+
+[name]
+	`异次元碎片`
+
+[explain]
+	`在娜塔莉娅和露德米拉那里兑换勇者装备时所需的材料。
+(可以在异界地下城中获得。)`
+
+[grade]
+	1
+
+[rarity]
+	2
+
+[usable job]
+	`[all]`
+[/usable job]
+
+[attach type]
+	`[trade]`
+
+[minimum level]
+	1
+
+[weight]
+	1
+
+[price]
+	10000
+
+[icon]
+	`Item/stackable/material.img`	364
+
+[field image]
+	`Item/FieldImage.img`	24
+
+[stackable type]
+	`[material]`	0
+
+[move wav]
+	`JEWEL_TOUCH`

@@ -1,0 +1,16 @@
+#PVF_File
+
+[NPC]
+	30
+
+[type]
+	`[etc shop]`
+
+[sell info]
+	[item list]
+		2749124	10008885
+	[/item list]
+[/sell info]
+
+[message]
+	`挑选一下吧， 这些都是有钱都不一定能买到的宝贝呀。`

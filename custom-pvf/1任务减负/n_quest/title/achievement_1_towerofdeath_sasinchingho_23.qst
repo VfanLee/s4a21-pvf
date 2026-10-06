@@ -1,0 +1,91 @@
+#PVF_File
+
+[grade]
+	`[achievement]`
+
+[ignore quest level 4 exp]
+	1
+
+[difficulty]
+	`a`
+
+[gold multiple]
+	300
+
+[npc index]
+	12
+
+[complete npc index]
+	-1
+
+[job]
+	`[all]`
+
+[grow type]
+	-1
+
+[level]
+	50	99
+
+[pre required quest]
+	3592
+[/pre required quest]
+
+[enemy reward item]
+	10504	2	11000	-1	4229	8	100	100
+	20500	2	11000	-1	4229	8	100	100
+	10301	2	11000	-1	4229	8	100	100
+	5305	2	11000	-1	4229	8	100	100
+	20601	2	11000	-1	4229	8	100	100
+	500	2	11000	-1	4229	8	100	100
+	5303	2	11000	-1	4229	8	100	100
+	5304	2	11000	-1	4229	8	100	100
+	15205	2	11000	-1	4229	8	100	100
+	5003	2	11000	-1	4229	8	100	100
+	15502	2	11000	-1	4229	8	100	100
+	10202	2	11000	-1	4229	8	100	100
+	20501	2	11000	-1	4229	8	100	100
+	20603	2	11000	-1	4229	8	100	100
+	5309	2	11000	-1	4229	8	100	100
+	20401	2	11000	-1	4229	8	100	100
+	10203	2	11000	-1	4229	8	100	100
+[/enemy reward item]
+
+[type]
+	`[seeking]`
+
+[sub type]
+	0
+
+[int data]
+	4229	100
+[/int data]
+
+[dungeon info]
+	11000	-1
+[/dungeon info]
+
+[reward type]
+	`[title]`
+
+[reward int data]
+	26634	1
+[/reward int data]
+
+[reward selection int data]
+	
+[/reward selection int data]
+
+[name]
+	`死神的气息 - 神秘的影像`
+
+[depend message]
+	`从死亡之塔的居民身上， 能获得一种叫做‘死神的气息’的能量团。
+这种神奇的物质蕴含着某种未知的魔力， 只要经过一定的提炼浓缩， 就可以被人们使用。
+所以这次我希望你能去一趟死亡之塔， 替我收集一些死神的气息回来。`
+
+[condition message]
+	`    前往亡者峡谷的『死亡之塔』， 收集250个[死神的气息]交给莎兰。`
+
+[solve message]
+	`你看到了吗？ 这能量中浮现的影像……这、 这是真的吗……看来……`
