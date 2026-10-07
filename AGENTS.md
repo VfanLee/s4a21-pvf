@@ -127,7 +127,7 @@ For edit workflow and hard rules, read [`.agents/skills/SKILL.md`](.agents/skill
 | Task | Domain skill |
 | --- | --- |
 | Script-path lookup, character/skill-tree registries and configuration entry points | [script navigation](.agents/skills/references/script-navigation.md) |
-| NPC placement in towns/Seria room; `.shp` listings, tabs, categories | [npc-shop](.agents/skills/npc-shop/SKILL.md) |
+| NPC placement, dialogue speakers/portraits; `.shp` listings, tabs, categories | [npc-shop](.agents/skills/npc-shop/SKILL.md) |
 | CERA cash-shop products, prices, pages, contracts, catalog migration | [cera-shop](.agents/skills/cera-shop/SKILL.md) |
 | Item definitions, package/quest rewards, expiry, bind, use effects | [items](.agents/skills/items/SKILL.md) |
 | Gold drop probability, amount, variance, clear-card multipliers | [gold-drop](.agents/skills/gold-drop/SKILL.md) |

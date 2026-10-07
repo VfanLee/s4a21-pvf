@@ -81,7 +81,7 @@ maintenance notes are for the human user and do not authorize agent mutations.
 | Task | Read |
 | --- | --- |
 | External bookmarks, script-path lookup, character/skill trees, events and link-system entry points | [A21 script navigation](references/script-navigation.md) |
-| NPC placement in towns/Seria room; shop tabs, listings, categories, `.shp` | [npc-shop/SKILL.md](npc-shop/SKILL.md) |
+| NPC placement, dialogue speakers/portraits; shop tabs, listings, categories, `.shp` | [npc-shop/SKILL.md](npc-shop/SKILL.md) |
 | CERA cash-shop listings, prices, pages, contracts, catalog migration | [cera-shop/SKILL.md](cera-shop/SKILL.md) |
 | Item definitions, NPC item prices, expiry, package rewards, quest objectives/rewards, tickets, `.stk`/`.equ` | [items/SKILL.md](items/SKILL.md) |
 | Profession disjointer machine endurance, repair capacity and consumption | [items/SKILL.md](items/SKILL.md) |

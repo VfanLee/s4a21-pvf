@@ -21,7 +21,7 @@ AI 执行规则使用英文，放在 `AGENTS.md` 和 `.agents/skills/`；本目�
 | 外部书签核验、职业技能树、活动与联动系统的脚本入口 | [skills/script-navigation.md](skills/script-navigation.md) |
 | PVF 结构与 ID 关系 | [structure.md](structure.md) |
 | 硬规则与通用修改流程 | [skills/README.md](skills/README.md) |
-| 城镇/赛丽亚房间 NPC 放置与商店（`.shp`） | [skills/npc-shop.md](skills/npc-shop.md) |
+| NPC 放置、对话说话人与立绘、商店（`.shp`） | [skills/npc-shop.md](skills/npc-shop.md) |
 | 点券商城的上架、售价、页面、契约、商品迁移 | [skills/cera-shop.md](skills/cera-shop.md) |
 | 道具定义、NPC 道具价格、期限、礼包与任务奖励（`.stk` / `.equ`） | [skills/items.md](skills/items.md) |
 | 金币掉落概率、数量、浮动、通关倍率 | [skills/gold-drop.md](skills/gold-drop.md) |

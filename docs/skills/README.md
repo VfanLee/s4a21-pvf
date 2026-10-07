@@ -28,7 +28,7 @@ GM/工具解析不完整不等于 PVF 格式错误。不同工具可能改变空
 | 要改什么 | 读 |
 | --- | --- |
 | 外部书签核验、脚本路径定位、职业技能树、活动与联动系统入口 | [script-navigation.md](script-navigation.md) |
-| 城镇/赛丽亚房间 NPC 放置、商店页签、上架、分类、`.shp` | [npc-shop.md](npc-shop.md) |
+| NPC 放置、对话说话人与立绘、商店页签、上架、分类、`.shp` | [npc-shop.md](npc-shop.md) |
 | 点券商城上架、售价、页面、契约、商品迁移 | [cera-shop.md](cera-shop.md) |
 | 道具定义、NPC 道具价格、期限、礼包、任务目标与奖励、券、`.stk` / `.equ` | [items.md](items.md) |
 | 副职业分解机耐久、修理容量与消耗 | [items.md](items.md) |

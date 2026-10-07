@@ -2,8 +2,9 @@
 name: npc-shop
 description: >-
   Edit S4A21 次元彼端 NPC shops in itemshop/*.shp: tabs, item lists, job categories,
-  listing, new shops, and NPC placement in towns or Seria's room. Use for
-  adding town NPCs, NPC shop, itemshop, .shp, NPC tabs, [item list],
+  listing, new shops, NPC placement, dialogue speaker names and portraits. Use
+  for adding town NPCs, NPC/shop ID changes, dialogue portrait errors,
+  dialogwindowimageindex.etc, itemshop, .shp, NPC tabs, [item list],
   or [use category]. NPC price lives on the item file. CERA cash-shop requests
   belong to cera-shop. Read repo AGENTS.md first.
 ---
@@ -38,6 +39,22 @@ Read the task target for actual NPC/shop IDs; filenames and example IDs are not 
 Other entries may be `[product item]` or `[secret shop]`. A static secret-shop close does not mean it appears in-game.
 
 New shop: write `itemshop/itemshop.lst` and the NPC `[item shop]`. Existing shop: keep those ID links.
+
+Changing a registry ID requires updating its referring records in the same
+edit. An NPC-ID change includes intended map `[NPC]` actors, the shop's `[NPC]`
+back-pointer and applicable dialogue speaker markers; check quest and other
+references before migrating an existing NPC. A shop-ID change includes the
+NPC's `[role]` shop link. Changing only registry rows leaves stale references:
+the old map actor no longer resolves, and the old shop link no longer opens
+the newly registered shop. Prefer preserving IDs for a name or appearance edit.
+Select unused IDs from the current target's matching registry and check for
+duplicate ID/path registrations. A free interval is a target-specific finding,
+not a universal safe range or proof of client runtime support. NPC and shop
+registries have separate namespaces; no global numeric replacement is valid.
+Do not globally replace a numeric NPC ID in a map: village-attack configuration
+such as `[day attacked monster info]` can reference dungeon IDs with the same
+number. Resolve those references separately through `dungeon/dungeon.lst` and
+preserve them during an NPC placement change.
 
 ## NPC placement versus shop registration
 
@@ -88,6 +105,47 @@ Reuse appearance through `.npc` `[small face]`, `[big face]`, `[popup face]`
 and `[field animation]`; optional ambient/dialogue sound fields also belong
 there. Keep the custom name and role/shop link independent of copied visuals.
 NPC dialogue and favor records are not required merely to reuse appearance.
+
+## Dialogue speaker names and portraits (A21)
+
+Dialogue strings can contain `<npc::ID>` speaker markers. Resolve nonzero IDs
+through `npc/npc.lst`; the marker selects the speaking NPC independently of
+the hosting definition's `[name]` and `[field name]`. Renaming a copied NPC
+does not rewrite its dialogue speakers. Check ordinary `[dialog]` strings and
+favor/gift dialogue strings for inherited speaker IDs. For a custom NPC's own
+lines, use its registered NPC ID; preserve `<npc::0>` player lines and deliberate
+other-NPC speakers. Appearance fields remain independent. Read back the markers
+and verify the dialogue name/portrait in-game after loading the updated PVF.
+
+Dialogue portraits have a separate registry: `etc/dialogwindowimageindex.etc`.
+`[npc image index pair]` starts with an IMG path followed by NPC-ID/image-index
+pairs. Match the dialogue speaker ID to this table; copying `.npc` face fields
+does not register a dialogue portrait. For a custom speaker reusing an existing
+portrait, add its actual registered NPC ID with the source speaker's image index
+under the same IMG path, preserving existing pairs. An NPC-ID migration must
+also migrate its portrait mapping.
+
+`[npc illust image index pair]` is a separate favor-illustration table;
+`[foreign npc image index pair]` references a separate localized IMG. Inspect
+each relevant table independently. Image indices are local to the given IMG:
+do not copy a number between different resource paths or assume localized-table
+precedence without client evidence. Do not replace the entire table from another
+archive. Reopen and verify pair structure, unique intended speaker mapping and
+unchanged unrelated entries; validate normal/favor dialogue in-game as applicable.
+Insert new pairs before the relevant closing tag; keep the section's IMG path
+and an even number of numeric tokens. `.npc` face-image indices and dialogue
+portrait indices refer to different resources and need not be equal.
+
+If a custom dialogue retains the previous NPC's portrait, first check for a
+missing speaker mapping in this table. Retained UI state does not identify the
+configured face or establish an NPC-ID limit. If the mapping exists, continue
+with resource availability and client lookup/assignment checks.
+
+`[favor sharing]` must be investigated separately from face and dialogue
+fields. The recorded ServerS4A21 `NpcFile` parser does not load this tag, and
+its favor repository keys state by the requested NPC ID. Do not promise
+server-side favor sharing merely because this tag exists in a target; client
+handling and a different server build require separate verification.
 
 ```text
 [NPC]
@@ -202,6 +260,7 @@ GM/tool shop indexes cannot prove category tabs or tabless shops. Verify categor
 | Goal | Edit |
 | --- | --- |
 | List / unlist / retab | `.shp` `[item list]` / `[tab]` |
+| Dialogue speaker name / portrait | `.npc` speaker markers / `etc/dialogwindowimageindex.etc` matching speaker pairs |
 | Gold buy price | item `[price]` (plain stackables fall back to `[value]`) |
 | Material exchange | item `[need material]`; resolve material IDs in stackable |
 | CERA shop | Follow [cera-shop](../cera-shop/SKILL.md) |

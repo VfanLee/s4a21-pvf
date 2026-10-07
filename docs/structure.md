@@ -127,7 +127,7 @@ Script.pvf 里的图标路径**不证明**客户端 NPK 里真有这张图。
 | 要改什么 | 中文 | 模型 |
 | --- | --- | --- |
 | 脚本路径、职业与技能树定位 | [定位索引](skills/script-navigation.md) | [script navigation](../.agents/skills/references/script-navigation.md) |
-| 城镇/赛丽亚房间 NPC 放置、商店页签、上架、分类、`.shp` | [skills/npc-shop.md](skills/npc-shop.md) | `.agents/skills/npc-shop/SKILL.md` |
+| NPC 放置、对话说话人与立绘、商店页签、上架、分类、`.shp` | [skills/npc-shop.md](skills/npc-shop.md) | `.agents/skills/npc-shop/SKILL.md` |
 | 点券商城上架、售价、页面、契约、商品迁移 | [skills/cera-shop.md](skills/cera-shop.md) | `.agents/skills/cera-shop/SKILL.md` |
 | 道具定义、NPC 道具价格、期限、礼包与任务奖励、`.stk` / `.equ` | [skills/items.md](skills/items.md) | `.agents/skills/items/SKILL.md` |
 | 金币掉落概率、数量、浮动、通关倍率 | [skills/gold-drop.md](skills/gold-drop.md) | `.agents/skills/gold-drop/SKILL.md` |
