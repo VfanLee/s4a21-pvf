@@ -3,7 +3,7 @@ name: dungeon-difficulty
 description: >-
   Inspect, compare, or adjust S4A21 次元彼端 dungeon difficulty: global and independent
   monster/APC tables, .dgn difficulty fields, and registered dungeon entrances.
-  Use for ordinary-dungeon difficulty, monsterapcdifficultybonus.tbl, monsterapc diff table,
+  Use for ordinary/Otherverse/ancient/Soul dungeon difficulty, monsterapcdifficultybonus.tbl, monsterapc diff table,
   difficulty comparisons, or checking whether legacy dungeons have entrances.
   Gold and item drop rates belong to gold-drop and item-drop.
 ---
@@ -48,6 +48,41 @@ block labels, difficulty names, or line numbers.
 
 An independent table is an explicit reference, not necessarily a table unique
 to one dungeon. Preserve unrelated difficulty fields during multiplier edits.
+
+## Otherverse and ancient-dungeon lookup
+
+These are the documented A21 family-specific difficulty-table paths. Verify
+the active registered `.dgn` references in each supplied target:
+
+| Family | Independent difficulty table |
+| --- | --- |
+| Otherverse, including merged dimensional-rift definitions | `dungeon/impossible/table/monsterapcdifficultybonus.tbl` |
+| Ordinary ancient dungeons | `dungeon/ancient/table/monsterapcdifficultybonus.tbl` |
+| Soul ancient dungeons (Requiem mode) | `dungeon/ancient/table/r_monsterapcdifficultybonus.tbl` |
+
+Ordinary ancient and Requiem use separate table files. Adjust the referenced
+ordinary table for ordinary ancient combat and the referenced `r_` table for
+Requiem combat; changing one does not edit the other. The two mode labels do
+not represent two columns within a single table. This file-family mapping does
+not establish the meanings of stat groups or the effective difficulty column.
+
+Close town/worldmap selection to the exact dungeon IDs before naming the affected
+version. Similar ancient filenames can lack a table reference; do not assume
+every `.dgn` under `ancient/` uses its ordinary ancient table. Otherverse solo
+tutorials and ancient quest variants can share the corresponding table; group
+all registered consumers and isolate them when the requested scope excludes
+them. Inspect Otherverse `.dgn` `[monster difficulty bonus]` alongside the
+table without assuming a composition formula. Attribute-column meanings remain
+subject to consumer verification; never multiply the whole table to increase
+combat difficulty or change difficulty-selection flags as a substitute for
+verified stat multipliers.
+Ancient/Soul selection can use separate registered dungeon IDs and XUI buttons
+while both definitions retain numerical difficulty fields. A mode label such
+as ordinary ancient does not establish difficulty index 0, nor does Soul imply
+the next table column. Close each XUI `dungeonIndex` to its `.dgn` and table,
+read designated difficulty separately, and verify the actual client/request
+index before naming the effective column. Parsed designation is not proof of
+client table indexing or combat behavior.
 
 ## Monster levels and Mirror Arad
 
